@@ -3,13 +3,20 @@ const enml2html = require("enml2html")
 const Promise = require("promise")
 const GitHub = require("github-api")
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const chalk = require("chalk")
 const path = require("path")
 require("dotenv").config()
 exports.createPages = async ({ actions }) => {
+  // Use environment variables
   const { token, webApiUrlPrefix, notebookGuid } = process.env
+  if (!token || !webApiUrlPrefix || !notebookGuid) {
+    console.error(chalk.red("Error: .env not set"))
+    process.exit()
+  }
   const { createPage } = actions
+
+  // to get all notes
   try {
-    // get all notes
     const evernote = new Evernote.Client({ token, sandbox: false })
     const notestore = evernote.getNoteStore()
     const query = new Evernote.NoteStore.NoteFilter({ notebookGuid })
@@ -27,13 +34,9 @@ exports.createPages = async ({ actions }) => {
       })
     )).sort((a, b) => (a.date < b.date ? 1 : -1))
 
-    // add css
-
-    // build pages
-
-    // compile
+    // and compile them.
     pages.forEach(async (page, i) => {
-      console.log("building", page.date)
+      console.log(chalk.green("->"), page.date)
       await createPage({
         path: `${page.date}`,
         component: path.resolve(`./src/note.js`),
@@ -65,10 +68,10 @@ exports.createPages = async ({ actions }) => {
       component: path.resolve(`./src/calendar.js`),
       context: { notes: pages.map(({ date }) => date) },
     })
+    console.log(chalk.green("->"), "index")
 
     return "published"
-    // return { page: pages }
   } catch (error) {
-    return error
+    console.log(chalk.red(error))
   }
 }
