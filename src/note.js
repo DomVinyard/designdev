@@ -7,8 +7,10 @@ const Styles = styled.div`
   max-width: 90vw !important;
   width: 600px;
   margin: 0 auto;
+  padding-bottom: 4rem;
   article {
-    font-size: 1.2rem !important;
+    font-size: 1.175rem !important;
+    text-align: justify;
   }
   h1 {
     margin-top: 4rem;
@@ -35,12 +37,15 @@ const Nav = ({ start, previous, next, end, index, total }) => (
 )
 
 const Note = ({ pageContext: { html, date, nav } }) => {
-  const body = cheerio.load(html)("body")
+  const $ = cheerio.load(html)
+  $("*").each(function() {
+    $(this).css({ "font-size": "", "font-family": "" })
+  })
   return (
     <Styles>
       <Nav {...nav} />
       <h1>{date}</h1>
-      <article dangerouslySetInnerHTML={{ __html: body.html() }}></article>
+      <article dangerouslySetInnerHTML={{ __html: $("body").html() }}></article>
     </Styles>
   )
 }
