@@ -7,7 +7,7 @@ const Styles = styled.div`
   main {
     width: 600px;
     margin: 0 auto;
-    font-size: 1.25rem
+    font-size: 1.3rem
     max-width: 90vw;
   }
 `
