@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 import cheerio from "cheerio"
 import styled from "styled-components"
 import { createGlobalStyle } from "styled-components"
+import TurndownService from "turndown"
+import ReactMarkdown from "react-markdown"
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -13,17 +15,24 @@ const GlobalStyle = createGlobalStyle`
     width: 600px;
     margin: 0 auto;
     padding-bottom: 4rem;
+    padding-top: 3rem;
   }
   article {
+    margin-top: 4rem;
     font-size: 1.175rem !important;
     text-align: justify;
+    line-height: 1.45rem;
   }
   h2 {
-    margin-top: 4rem;
+    text-align: center;
   }
   nav {
-    margin-top: 2rem;
+    margin-top: 0rem;
     text-align: center;
+    button {
+      padding: 4px 8px;
+      font-size: 0.9rem;
+    }
   }
   `
 
@@ -40,30 +49,29 @@ const NavButton = ({ to, text }) =>
 
 const Nav = ({ start, previous, next, end, index, total }) => (
   <nav>
-    <NavButton to={start} text="start" />
-    <NavButton to={previous} text="previous" />
+    <NavButton to={start} text="<< start" />
+    <NavButton
+      to={previous}
+      text={previous ? `< ${previous.split(".")[1]}` : "previous"}
+    />
     <NavButton to="/calendar" text="🗓" />
-    <NavButton to={next} text="next" />
-    <NavButton to={end} text="end" />
+    <NavButton to={next} text={next ? `${next.split(".")[1]} >` : "next"} />
+    <NavButton to={end} text="latest >>" />
   </nav>
 )
 
-const cleanEvernote = html => {
-  const $ = cheerio.load(html)
-  $("*").each(function() {
-    $(this).css({ "font-size": "", "font-family": "" })
-  })
-  return $("body").html()
-}
-
 const Note = ({ pageContext: { html, date, nav } }) => {
-  const __html = cleanEvernote(html)
+  const $ = cheerio.load(html)
+  var turndown = new TurndownService()
+  var markdown = turndown.turndown($("body").html())
   return (
     <main>
-      <Nav {...nav} />
       <h2>{date}</h2>
-      <article dangerouslySetInnerHTML={{ __html }}></article>
-      <GlobalStyle whiteColor />
+      <Nav {...nav} />
+      <article>
+        <ReactMarkdown source={markdown} />
+      </article>
+      <GlobalStyle />
     </main>
   )
 }

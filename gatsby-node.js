@@ -36,7 +36,6 @@ exports.createPages = async ({ actions }) => {
 
     // and compile them.
     pages.forEach(async (page, i) => {
-      console.log(chalk.green("->"), page.date)
       await createPage({
         path: `${page.date}`,
         component: path.resolve(`./src/note.js`),
@@ -55,6 +54,7 @@ exports.createPages = async ({ actions }) => {
           },
         },
       })
+      console.log(chalk.green("->"), page.date)
     })
 
     // build homepage and calendar
