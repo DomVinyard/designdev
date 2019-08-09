@@ -31,16 +31,39 @@ exports.createPages = async ({ actions }) => {
 
     // build pages
 
-    // build homepage
-
     // compile
-    pages.forEach(async page => {
+    pages.forEach(async (page, i) => {
       console.log("building", page.date)
       await createPage({
         path: `${page.date}`,
         component: path.resolve(`./src/note.js`),
-        context: page,
+        context: {
+          ...page,
+          nav: {
+            start:
+              pages.slice(-1)[0].date !== page.date
+                ? pages.slice(-1)[0].date
+                : undefined,
+            previous: (pages[i + 1] || {}).date,
+            next: (pages[i - 1] || {}).date,
+            end: pages[0].date !== page.date ? pages[0].date : undefined,
+            index: pages.length - i,
+            total: pages.length,
+          },
+        },
       })
+    })
+
+    // build homepage and calendar
+    await createPage({
+      path: `/`,
+      component: path.resolve(`./src/index.js`),
+      context: { slug: pages[0].date },
+    })
+    await createPage({
+      path: `/calendar`,
+      component: path.resolve(`./src/calendar.js`),
+      context: { notes: pages.map(({ date }) => date) },
     })
 
     return "published"
