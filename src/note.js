@@ -2,24 +2,32 @@ import React from "react"
 import { Link } from "gatsby"
 import cheerio from "cheerio"
 import styled from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
-const Styles = styled.div`
-  max-width: 80vw !important;
-  width: 600px;
-  margin: 0 auto;
-  padding-bottom: 4rem;
+const GlobalStyle = createGlobalStyle`
+  body, html {
+    margin: 0;
+  }
+  main {
+    max-width: 80vw !important;
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+  }
   article {
     font-size: 1.175rem !important;
     text-align: justify;
   }
-  h1 {
+  h2 {
     margin-top: 4rem;
   }
   nav {
     margin-top: 2rem;
     text-align: center;
   }
-`
+  `
+
+const Styles = styled.div``
 
 const NavButton = ({ to, text }) =>
   to ? (
@@ -40,17 +48,23 @@ const Nav = ({ start, previous, next, end, index, total }) => (
   </nav>
 )
 
-const Note = ({ pageContext: { html, date, nav } }) => {
+const cleanEvernote = html => {
   const $ = cheerio.load(html)
   $("*").each(function() {
     $(this).css({ "font-size": "", "font-family": "" })
   })
+  return $("body").html()
+}
+
+const Note = ({ pageContext: { html, date, nav } }) => {
+  const __html = cleanEvernote(html)
   return (
-    <Styles>
+    <main>
       <Nav {...nav} />
-      <h1>{date}</h1>
-      <article dangerouslySetInnerHTML={{ __html: $("body").html() }}></article>
-    </Styles>
+      <h2>{date}</h2>
+      <article dangerouslySetInnerHTML={{ __html }}></article>
+      <GlobalStyle whiteColor />
+    </main>
   )
 }
 
