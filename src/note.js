@@ -4,11 +4,14 @@ import cheerio from "cheerio"
 import styled from "styled-components"
 
 const Styles = styled.div`
-  main {
-    width: 600px;
-    margin: 0 auto;
-    font-size: 1.3rem
-    max-width: 90vw;
+  max-width: 90vw !important;
+  width: 600px;
+  margin: 0 auto;
+  article {
+    font-size: 1.2rem !important;
+  }
+  h1 {
+    margin-top: 4rem;
   }
 `
 
@@ -35,11 +38,9 @@ const Note = ({ pageContext: { html, date, nav } }) => {
   const body = cheerio.load(html)("body")
   return (
     <Styles>
-      <main>
-        <Nav {...nav} />
-        <h1>{date}</h1>
-        <article dangerouslySetInnerHTML={{ __html: body.html() }}></article>
-      </main>
+      <Nav {...nav} />
+      <h1>{date}</h1>
+      <article dangerouslySetInnerHTML={{ __html: body.html() }}></article>
     </Styles>
   )
 }
