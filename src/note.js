@@ -4,7 +4,7 @@ import cheerio from "cheerio"
 import styled from "styled-components"
 
 const Styles = styled.div`
-  max-width: 90vw !important;
+  max-width: 80vw !important;
   width: 600px;
   margin: 0 auto;
   padding-bottom: 4rem;
@@ -14,6 +14,10 @@ const Styles = styled.div`
   }
   h1 {
     margin-top: 4rem;
+  }
+  nav {
+    margin-top: 2rem;
+    text-align: center;
   }
 `
 
