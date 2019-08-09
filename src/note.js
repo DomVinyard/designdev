@@ -1,57 +1,46 @@
 import React from "react"
 import { Link } from "gatsby"
 import cheerio from "cheerio"
+import styled from "styled-components"
+
+const Styles = styled.div`
+  main {
+    width: 600px;
+    margin: 0 auto;
+    font-size: 1.25rem
+    max-width: 90vw;
+  }
+`
+
+const NavButton = ({ to, text }) =>
+  to ? (
+    <Link to={to}>
+      <button>{text}</button>
+    </Link>
+  ) : (
+    <button disabled>{text}</button>
+  )
 
 const Nav = ({ start, previous, next, end, index, total }) => (
   <nav>
-    {start ? (
-      <Link to={start}>
-        <button>start</button>
-      </Link>
-    ) : (
-      <button disabled>start</button>
-    )}
-    {previous ? (
-      <Link to={previous}>
-        <button>previous</button>
-      </Link>
-    ) : (
-      <button disabled>previous</button>
-    )}
-    <Link to="/calendar">
-      <button>🗓</button>
-    </Link>
-    {next ? (
-      <Link to={next}>
-        <button>next</button>
-      </Link>
-    ) : (
-      <button disabled>next</button>
-    )}
-    {end ? (
-      <Link to={end}>
-        <button>end</button>
-      </Link>
-    ) : (
-      <button disabled>end</button>
-    )}
-    <span>
-      {index} of {total}
-    </span>
+    <NavButton to={start} text="start" />
+    <NavButton to={previous} text="previous" />
+    <NavButton to="/calendar" text="🗓" />
+    <NavButton to={next} text="next" />
+    <NavButton to={end} text="end" />
   </nav>
 )
 
 const Note = ({ pageContext: { html, date, nav } }) => {
   const body = cheerio.load(html)("body")
   return (
-    <React.Fragment>
-      <Nav {...nav} />
-
-      <h1>{date}</h1>
-      <article>
-        <div dangerouslySetInnerHTML={{ __html: body.html() }} />
-      </article>
-    </React.Fragment>
+    <Styles>
+      <main>
+        <Nav {...nav} />
+        <h1>{date}</h1>
+        <article dangerouslySetInnerHTML={{ __html: body.html() }}></article>
+      </main>
+    </Styles>
   )
 }
 
