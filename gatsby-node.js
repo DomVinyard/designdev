@@ -5,73 +5,114 @@ const GitHub = require("github-api")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const chalk = require("chalk")
 const path = require("path")
+const TurndownService = require("turndown")
+const { Dropbox } = require("dropbox")
+const fetch = require("isomorphic-fetch")
+const JSZip = require("jszip")
 require("dotenv").config()
-exports.createPages = async ({ actions }) => {
-  // Use environment variables
-  const { token, webApiUrlPrefix, notebookGuid } = process.env
-  if (!token || !webApiUrlPrefix || !notebookGuid) {
-    console.error(chalk.red("Error: .env not set"))
-    process.exit()
+
+const Index = path.resolve(`./src/index.js`)
+const Note = path.resolve(`./src/note.js`)
+const Calendar = path.resolve(`./src/calendar.js`)
+
+const sortByDate = (a, b) => (a.date < b.date ? 1 : -1)
+const val = Object.values
+
+// Trigger build - pages: [{ date, content }]
+const deploy = async ({ createPage, pages }) => {
+  if (!pages || !pages.length || !pages[0].date || !pages[0].content) {
+    throw "no pages" // ❗️
   }
-  const { createPage } = actions
+  if (!createPage) {
+    throw "no createPage function" // ❗️
+  }
+  pages.forEach(async (page, i) => {
+    const start =
+      pages.slice(-1)[0].date !== page.date ? pages.slice(-1)[0].date : null
+    const end = pages[0].date !== page.date ? pages[0].date : null
+    const previous = (pages[i + 1] || {}).date
+    const next = (pages[i - 1] || {}).date
+    await createPage({
+      path: `${page.date}`,
+      component: Note,
+      context: { ...page, nav: { start, previous, next, end } },
+    })
+  })
+  const latest = pages[0].date
+  await createPage({ path: `/`, component: Index, context: { slug: latest } })
+  await createPage({
+    path: `/calendar`,
+    component: Calendar,
+    context: { pages },
+  })
+}
 
-  // to get all notes
+// Get content from Dropbox (iA Writer)
+const fromDropbox = async createPage => {
+  const { DROPBOX_TOKEN } = process.env
+  if (!DROPBOX_TOKEN) {
+    throw new Error("no .env")
+  }
+  const dropbox = new Dropbox({ accessToken: DROPBOX_TOKEN, fetch })
+  const { fileBinary } = await dropbox.filesDownloadZip({ path: "/domfyi" })
+  const zip = await JSZip.loadAsync(fileBinary)
+  const files = val(val(val(val(zip))[0]))
+  return (await Promise.all(
+    files.map(async file => {
+      const content = (await file._data).compressedContent
+      const data = {
+        date: file.name.slice(7).replace(".txt", ""),
+        content: content ? content.toString() : false,
+      }
+      return data
+    })
+  ))
+    .filter(file => {
+      if (!file.content) return false
+      // regex match title
+      // emoji match title
+      return true
+    })
+    .sort(sortByDate)
+}
+
+// Get content from Evernote
+const fromEvernote = async createPage => {
+  const { EVERNOTE_TOKEN, EVERNOTE_PREFIX, EVERNOTE_NOTEBOOK } = process.env
+  if (!EVERNOTE_TOKEN || !EVERNOTE_PREFIX || !EVERNOTE_NOTEBOOK) {
+    throw new Error("no .env") // ❗️
+  }
+  const evernote = new Evernote.Client({
+    token: EVERNOTE_TOKEN,
+    sandbox: false,
+  })
+  const notestore = evernote.getNoteStore()
+  const query = new Evernote.NoteStore.NoteFilter({
+    notebookGuid: EVERNOTE_NOTEBOOK,
+  })
+  const { notes } = await notestore.findNotesMetadata(query, 0, 250, 0) // 📡 // 250 limit
+  if (!notes || !notes.length) {
+    throw new Error("could not connect to evernote") // ❗️
+  }
+  return (await Promise.all(
+    notes.map(async ({ guid }) => {
+      const turndownService = new TurndownService()
+      const note = await notestore.getNote(guid, 1, 1, 1, 1)
+      const config = { webApiUrlPrefix: EVERNOTE_PREFIX, noteKey: note.title }
+      const html = enml2html(Object.assign(note, config))
+      const content = turndownService.turndown(html)
+      return { content, date: note.title }
+    })
+  )).sort(sortByDate)
+}
+
+// Entry point
+exports.createPages = async ({ actions: { createPage } }) => {
   try {
-    const evernote = new Evernote.Client({ token, sandbox: false })
-    const notestore = evernote.getNoteStore()
-    const query = new Evernote.NoteStore.NoteFilter({ notebookGuid })
-    const { notes } = await notestore.findNotesMetadata(query, 0, 250, 0) // 250 limit
-
-    // convert them into html
-    const pages = (await Promise.all(
-      notes.map(async ({ guid }) => {
-        const note = await notestore.getNote(guid, 1, 1, 1, 1)
-        const enml = Object.assign(note, {
-          webApiUrlPrefix,
-          noteKey: note.title,
-        })
-        return { html: enml2html(enml), date: note.title }
-      })
-    )).sort((a, b) => (a.date < b.date ? 1 : -1))
-
-    // and compile them.
-    pages.forEach(async (page, i) => {
-      await createPage({
-        path: `${page.date}`,
-        component: path.resolve(`./src/note.js`),
-        context: {
-          ...page,
-          nav: {
-            start:
-              pages.slice(-1)[0].date !== page.date
-                ? pages.slice(-1)[0].date
-                : undefined,
-            previous: (pages[i + 1] || {}).date,
-            next: (pages[i - 1] || {}).date,
-            end: pages[0].date !== page.date ? pages[0].date : undefined,
-            index: pages.length - i,
-            total: pages.length,
-          },
-        },
-      })
-      console.log(chalk.green("->"), page.date)
-    })
-
-    // build homepage and calendar
-    await createPage({
-      path: `/`,
-      component: path.resolve(`./src/index.js`),
-      context: { slug: pages[0].date },
-    })
-    await createPage({
-      path: `/calendar`,
-      component: path.resolve(`./src/calendar.js`),
-      context: { notes: pages.map(({ date }) => date) },
-    })
-    console.log(chalk.green("->"), "index")
-
-    return "published"
+    const pages = await fromDropbox(createPage) // fromEvernote(createPage) //
+    console.log({ pages })
+    await deploy({ createPage, pages }) // 🎉
   } catch (error) {
-    console.log(chalk.red(error))
+    console.error(chalk.red(JSON.stringify(error)))
   }
 }

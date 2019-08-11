@@ -1,7 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Calendar = ({ pageContext: { notes } }) => {
+const Calendar = ({ pageContext: { pages } }) => {
+  const notes = pages.map(({ date }) => date)
   return (
     <React.Fragment>
       <h1>dom.fyi</h1>

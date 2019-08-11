@@ -1,0 +1,28 @@
+body,
+html {
+  margin: 0;
+}
+main {
+  max-width: 80vw !important;
+  width: 600px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  padding-top: 3rem;
+}
+article {
+  margin-top: 4rem;
+  font-size: 1.175rem !important;
+  text-align: justify;
+  line-height: 1.45rem;
+}
+h2 {
+  text-align: center;
+}
+nav {
+  margin-top: 0rem;
+  text-align: center;
+}
+nav button {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
