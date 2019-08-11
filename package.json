@@ -1,11 +1,10 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dom",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "dom <me@dom.fyi>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.6",
     "chalk": "^2.4.2",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
@@ -18,7 +17,6 @@
     "gatsby-plugin-offline": "^2.2.5",
     "gatsby-plugin-react-helmet": "^3.1.3",
     "gatsby-plugin-sharp": "^2.2.10",
-    "gatsby-plugin-styled-components": "^3.1.2",
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-sharp": "^2.2.6",
     "github-api": "^3.2.2",
