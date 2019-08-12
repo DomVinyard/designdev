@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 
 // ? font Alegreya
+// ? styling from https://basecamp.com/shapeup/1.5-chapter-06 // ff-meta-serif-web-pro
 
 const NavButton = ({ to, text }) =>
   to ? (

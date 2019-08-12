@@ -6,7 +6,7 @@ exports.handler = async function(event, context, callback) {
 
   // TODO return if no actionable changes
   // get latest build date
-  // filter publishable files (rocket no edit)
+  // filter publishable files (rocket/no edit)  - no content needed
   // check if any latest file date is after latest build
 
   await axios.post(NETLIFY_BUILD_HOOK)

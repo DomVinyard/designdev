@@ -65,18 +65,18 @@ const fromDropbox = async createPage => {
   const files = val(val(val(val(zip))[0]))
   return (await Promise.all(
     files.map(async file => {
-      const content = (await file._data).compressedContent
-      const data = {
-        date: file.name.slice(7).replace(".txt", ""),
-        content: content ? content.toString() : false,
-      }
+      const rawContent = (await file._data).compressedContent
+      if (!rawContent) return false
+      const [firstLine, ...content] = rawContent.toString().split(`\n`)
+      const date = file.name.slice(7).replace(".txt", "")
+      const data = { date, content: content.join(`\n`), firstLine }
       return data
     })
   ))
     .filter(file => {
       if (!file.content) return false
       // TODO: regex match title
-      // TODO: emoji match title
+      if (!file.firstLine.trim().startsWith("🚀")) return false
       return true
     })
     .sort(sortByDate)
@@ -118,8 +118,10 @@ exports.createPages = async ({ actions }) => {
   try {
     const source = fromDropbox // ? fromEvernote
     const pages = await source(actions.createPage)
+    console.log(pages)
     await deploy({ actions, pages }) // 🎉
   } catch (error) {
     console.error(chalk.red(JSON.stringify(error)))
+    process.exit()
   }
 }
