@@ -24,7 +24,7 @@ const Note = ({
         {start ? (
           <NavButton to={start} text="‹ start" />
         ) : (
-          <NavButton to="/calendar" text={"‹ view all"} />
+          <NavButton to="/list" text={"‹ view all"} />
         )}
         <h1>🚀{date}</h1>
       </header>

@@ -60,10 +60,10 @@ exports.createPages = async ({ actions: { createPage, createRedirect } }) => {
       statusCode: 200,
     })
     //
-    // build calendar view
+    // build list view
     await createPage({
-      path: `/calendar`,
-      component: path.resolve(`./src/calendar.js`),
+      path: `/list`,
+      component: path.resolve(`./src/list.js`),
       context: { pages },
     })
   } catch (error) {

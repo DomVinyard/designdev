@@ -12,7 +12,8 @@ main {
   padding-top: 3rem;
   font-family: "Alegreya", serif;
 }
-article {
+article,
+nav {
   font-size: 1.5rem;
   line-height: 2.45rem;
   margin-top: 1rem;
@@ -37,8 +38,33 @@ footer h2 a {
 a {
   text-decoration: none;
 }
+a,
+a:visited {
+  color: #555;
+}
+article a {
+  border-bottom: 1px solid #555;
+}
 blockquote {
   border-left: 6px solid #ddd;
   padding-left: 1rem;
   margin-left: 0;
+}
+nav span p {
+  color: #bbb;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  pointer-events: none;
+}
+nav label {
+  margin-right: 1rem;
+}
+nav span p a {
+  color: #bbb !important;
+}
+nav div {
+  height: 36px;
+  overflow: hidden;
+  margin-top: 0.5rem;
 }
