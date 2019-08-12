@@ -21,8 +21,8 @@ const Note = ({
         <link rel="canonical" href={`https://dom.fyi/${date}`} />
       </Helmet>
       <header>
-        <h2>🚀{date}</h2>
         {start && <NavButton to={start} text="< start" />}
+        <h1>🚀{date}</h1>
       </header>
       <article>
         <ReactMarkdown source={content} />
