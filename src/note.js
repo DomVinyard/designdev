@@ -29,12 +29,14 @@ const Note = ({
       </header>
       <article>
         <ReactMarkdown source={content} />
-        {next && <NavButton to={next} text={<h2>next ></h2>} />}
+        {next && (
+          <h2>
+            <NavButton to={next} text="next day >" />
+          </h2>
+        )}
       </article>
       <footer>
         <nav>
-          {previous && <NavButton to={previous} text={`< back`} />}
-          {previous && " - "}
           <NavButton to="/calendar" text={"  🗓 "} />
         </nav>
       </footer>
