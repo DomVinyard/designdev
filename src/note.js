@@ -21,7 +21,7 @@ const Note = ({
       <Helmet>
         <meta charSet="utf-8" />
         <title>{date}</title>
-        <link rel="canonical" href={`http://dom.fyi/${date}`} />
+        <link rel="canonical" href={`https://dom.fyi/${date}`} />
       </Helmet>
       <header>
         <h2>🚀{date}</h2>
@@ -29,7 +29,7 @@ const Note = ({
       </header>
       <article>
         <ReactMarkdown source={content} />
-        <NavButton to={next} text={<h2>next ></h2>} />
+        {next && <NavButton to={next} text={<h2>next ></h2>} />}
       </article>
       <footer>
         <nav>
