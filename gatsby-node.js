@@ -3,13 +3,12 @@ const path = require("path")
 const { Dropbox } = require("dropbox")
 const fetch = require("isomorphic-fetch")
 const JSZip = require("jszip")
-require("dotenv").config()
 const unzip = Object.values
-exports.createPages = async ({ actions }) => {
+require("dotenv").config()
+exports.createPages = async ({ actions: { createPage, createRedirect } }) => {
   try {
     //
     // Connect to dropbox
-    const { createPage, createRedirect } = actions
     const { DROPBOX_TOKEN } = process.env
     if (!DROPBOX_TOKEN) {
       throw new Error("no .env")

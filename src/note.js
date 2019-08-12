@@ -6,31 +6,34 @@ import ReactMarkdown from "react-markdown"
 // ? styling from https://basecamp.com/shapeup/1.5-chapter-06 // ff-meta-serif-web-pro
 
 const NavButton = ({ to, text }) =>
-  to ? (
-    <Link to={to} children={<button>{text}</button>} />
-  ) : (
-    <button disabled>{text}</button>
-  )
+  to ? <Link to={to} children={text} /> : " "
 
-const Nav = ({ start, previous, next, end, index, total }) => (
-  <nav>
-    <NavButton to={start} text="<< start" />
-    <NavButton
-      to={previous}
-      text={previous ? `< ${previous.split(".")[1]}` : "previous"}
-    />
-    <NavButton to="/calendar" text="🗓" />
-    <NavButton to={next} text={next ? `${next.split(".")[1]} >` : "next"} />
-    <NavButton to={end} text="latest >>" />
-  </nav>
-)
-
-const Note = ({ pageContext: { date, nav, content } }) => {
+const Note = ({
+  pageContext: {
+    date,
+    nav: { start, previous, next, end, index, total },
+    content,
+  },
+}) => {
   return (
     <main>
-      <h2>{date}</h2>
-      <Nav {...nav} />
+      <h2>🚀{date}</h2>
+      <nav>
+        <NavButton
+          to={previous}
+          text={previous ? `< ${previous.split(".")[1]}` : "previous"}
+        />
+        {" - "}
+        <NavButton to={next} text={next ? `${next.split(".")[1]} >` : "next"} />
+      </nav>
       <article children={<ReactMarkdown source={content} />}></article>
+      <footer>
+        <nav>
+          <NavButton to={start} text="<< start" />
+          <NavButton to="/calendar" text="🗓" />
+          <NavButton to={end} text="latest >>" />
+        </nav>
+      </footer>
     </main>
   )
 }
