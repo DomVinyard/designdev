@@ -1,5 +1,5 @@
 exports.handler = function(event, context, callback) {
-  console.log({ context })
+  console.log({ event, context: context.clientContext.custom })
   callback(null, {
     headers: {
       "Content-Type": "text/plain",
