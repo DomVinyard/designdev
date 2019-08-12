@@ -6,7 +6,7 @@ html {
 }
 main {
   max-width: 80vw !important;
-  width: 800px;
+  width: 820px;
   margin: 0 auto;
   padding-bottom: 4rem;
   padding-top: 3rem;
@@ -22,9 +22,11 @@ footer {
   text-align: center;
 }
 header h2 {
-  display: inline-block;
   margin-bottom: 0;
   margin: 0;
+}
+header a {
+  font-size: 1.1rem;
 }
 footer h2 {
   text-align: right;
@@ -33,19 +35,6 @@ footer h2 {
 footer h2 a {
   font-size: 1.5rem;
 }
-nav {
-  margin-top: 0rem;
-}
 a {
   text-decoration: none;
-}
-nav a,
-nav span {
-  font-size: 1.2rem;
-}
-header nav span {
-  font-weight: bold;
-}
-img {
-  width: 100%;
 }

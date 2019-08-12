@@ -22,20 +22,18 @@ const Note = ({
       </Helmet>
       <header>
         <h2>🚀{date}</h2>
-        <nav>{start && <NavButton to={start} text="< start" />}</nav>
+        {start && <NavButton to={start} text="< start" />}
       </header>
       <article>
         <ReactMarkdown source={content} />
       </article>
       <footer>
-        <nav>
-          {next && (
-            <h2>
-              <NavButton to={next} text="next day >" />
-            </h2>
-          )}
-          <NavButton to="/calendar" text={"  🗓 "} />
-        </nav>
+        {next && (
+          <h2>
+            <NavButton to={next} text="next day >" />
+          </h2>
+        )}
+        <NavButton to="/calendar" text={"  🗓 "} />
       </footer>
     </main>
   )
