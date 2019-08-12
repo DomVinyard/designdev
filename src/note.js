@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 
+// ? font Alegreya
+
 const NavButton = ({ to, text }) =>
   to ? (
     <Link to={to} children={<button>{text}</button>} />

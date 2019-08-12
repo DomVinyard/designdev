@@ -10,21 +10,20 @@ const { Dropbox } = require("dropbox")
 const fetch = require("isomorphic-fetch")
 const JSZip = require("jszip")
 require("dotenv").config()
-
 const Index = path.resolve(`./src/index.js`)
 const Note = path.resolve(`./src/note.js`)
 const Calendar = path.resolve(`./src/calendar.js`)
-
 const sortByDate = (a, b) => (a.date < b.date ? 1 : -1)
 const val = Object.values
 
-// Trigger build - pages: [{ date, content }]
+// * Trigger build
+// @param pages [{ date, content }]
 const deploy = async ({ createPage, pages }) => {
   if (!pages || !pages.length || !pages[0].date || !pages[0].content) {
-    throw "no pages" // ❗️
+    throw "no pages"
   }
   if (!createPage) {
-    throw "no createPage function" // ❗️
+    throw "no createPage function"
   }
   pages.forEach(async (page, i) => {
     const start =
@@ -47,7 +46,8 @@ const deploy = async ({ createPage, pages }) => {
   })
 }
 
-// Get content from Dropbox (iA Writer)
+// * Get content from Dropbox (iA Writer)
+
 const fromDropbox = async createPage => {
   const { DROPBOX_TOKEN } = process.env
   if (!DROPBOX_TOKEN) {
@@ -69,18 +69,19 @@ const fromDropbox = async createPage => {
   ))
     .filter(file => {
       if (!file.content) return false
-      // regex match title
-      // emoji match title
+      // TODO: regex match title
+      // TODO: emoji match title
       return true
     })
     .sort(sortByDate)
 }
 
-// Get content from Evernote
+// * Get content from Evernote
+
 const fromEvernote = async createPage => {
   const { EVERNOTE_TOKEN, EVERNOTE_PREFIX, EVERNOTE_NOTEBOOK } = process.env
   if (!EVERNOTE_TOKEN || !EVERNOTE_PREFIX || !EVERNOTE_NOTEBOOK) {
-    throw new Error("no .env") // ❗️
+    throw new Error("no .env")
   }
   const evernote = new Evernote.Client({
     token: EVERNOTE_TOKEN,
@@ -90,9 +91,9 @@ const fromEvernote = async createPage => {
   const query = new Evernote.NoteStore.NoteFilter({
     notebookGuid: EVERNOTE_NOTEBOOK,
   })
-  const { notes } = await notestore.findNotesMetadata(query, 0, 250, 0) // 📡 // 250 limit
+  const { notes } = await notestore.findNotesMetadata(query, 0, 250, 0) // ! 250 limit
   if (!notes || !notes.length) {
-    throw new Error("could not connect to evernote") // ❗️
+    throw new Error("could not connect to evernote")
   }
   return (await Promise.all(
     notes.map(async ({ guid }) => {
@@ -106,10 +107,10 @@ const fromEvernote = async createPage => {
   )).sort(sortByDate)
 }
 
-// Entry point
+// * Entry point
 exports.createPages = async ({ actions: { createPage } }) => {
   try {
-    const pages = await fromDropbox(createPage) // fromEvernote(createPage) //
+    const pages = await fromDropbox(createPage) // ? fromEvernote(createPage)
     await deploy({ createPage, pages }) // 🎉
   } catch (error) {
     console.error(chalk.red(JSON.stringify(error)))
