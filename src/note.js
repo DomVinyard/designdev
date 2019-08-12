@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Helmet } from "react-helmet"
 import ReactMarkdown from "react-markdown"
 
 // ? font Alegreya
@@ -17,6 +18,11 @@ const Note = ({
 }) => {
   return (
     <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{date}</title>
+        <link rel="canonical" href={`http://dom.fyi/${date}`} />
+      </Helmet>
       <header>
         <h2>🚀{date}</h2>
         <nav>{start && <NavButton to={start} text="< start" />}</nav>
