@@ -3,16 +3,13 @@ import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import ReactMarkdown from "react-markdown"
 
-// ? font Alegreya
-// ? styling from https://basecamp.com/shapeup/1.5-chapter-06 // ff-meta-serif-web-pro
-
 const NavButton = ({ to, text }) =>
   to ? <Link to={to} children={text} /> : <span>{text}</span>
 
 const Note = ({
   pageContext: {
     date,
-    nav: { start, previous, next, end, index, total },
+    nav: { start, next },
     content,
   },
 }) => {
@@ -29,14 +26,14 @@ const Note = ({
       </header>
       <article>
         <ReactMarkdown source={content} />
-        {next && (
-          <h2>
-            <NavButton to={next} text="next day >" />
-          </h2>
-        )}
       </article>
       <footer>
         <nav>
+          {next && (
+            <h2>
+              <NavButton to={next} text="next day >" />
+            </h2>
+          )}
           <NavButton to="/calendar" text={"  🗓 "} />
         </nav>
       </footer>
