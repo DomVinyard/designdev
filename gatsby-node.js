@@ -1,11 +1,10 @@
-const Evernote = require("evernote")
 const Promise = require("promise")
 const path = require("path")
 const { Dropbox } = require("dropbox")
 const fetch = require("isomorphic-fetch")
 const JSZip = require("jszip")
 require("dotenv").config()
-const val = Object.values
+const unzip = Object.values
 exports.createPages = async ({ actions }) => {
   try {
     //
@@ -18,7 +17,7 @@ exports.createPages = async ({ actions }) => {
     const dropbox = new Dropbox({ accessToken: DROPBOX_TOKEN, fetch })
     const { fileBinary } = await dropbox.filesDownloadZip({ path: "/domfyi" })
     const zip = await JSZip.loadAsync(fileBinary)
-    const files = val(val(val(val(zip))[0]))
+    const files = unzip(unzip(unzip(unzip(zip))[0]))
     const pages = (await Promise.all(
       files.map(async file => {
         //
@@ -41,7 +40,7 @@ exports.createPages = async ({ actions }) => {
       .sort((a, b) => (a.date < b.date ? 1 : -1))
     pages.forEach(async (page, i) => {
       //
-      // construct navigation and build page object into static html
+      // construct nav and build page object into static html
       const start =
         pages.slice(-1)[0].date !== page.date ? pages.slice(-1)[0].date : null
       const end = pages[0].date !== page.date ? pages[0].date : null
@@ -69,8 +68,6 @@ exports.createPages = async ({ actions }) => {
       context: { pages },
     })
   } catch (error) {
-    //
-    // crash if error
     console.error(error)
     process.exit()
   }
