@@ -21,7 +21,11 @@ const Note = ({
         <link rel="canonical" href={`https://dom.fyi/${date}`} />
       </Helmet>
       <header>
-        {start && <NavButton to={start} text="< start" />}
+        {start ? (
+          <NavButton to={start} text="‹ start" />
+        ) : (
+          <NavButton to="/calendar" text={"‹ view all"} />
+        )}
         <h1>🚀{date}</h1>
       </header>
       <article>
@@ -33,7 +37,6 @@ const Note = ({
             <NavButton to={next} text="next day >" />
           </h2>
         )}
-        <NavButton to="/calendar" text={"  🗓 "} />
       </footer>
     </main>
   )
