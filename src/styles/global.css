@@ -40,3 +40,8 @@ footer h2 a {
 a {
   text-decoration: none;
 }
+blockquote {
+  border-left: 6px solid #ddd;
+  padding-left: 1rem;
+  margin-left: 0;
+}
