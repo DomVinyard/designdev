@@ -17,8 +17,8 @@ const sortByDate = (a, b) => (a.date < b.date ? 1 : -1)
 const val = Object.values
 
 // * Trigger build
-// @param pages [{ date, content }]
-const deploy = async ({ createPage, pages }) => {
+
+const deploy = async ({ actions: { createPage, createRedirect }, pages }) => {
   if (!pages || !pages.length || !pages[0].date || !pages[0].content) {
     throw "no pages"
   }
@@ -38,7 +38,13 @@ const deploy = async ({ createPage, pages }) => {
     })
   })
   const latest = pages[0].date
-  await createPage({ path: `/`, component: Index, context: { slug: latest } })
+  // await createPage({ path: `/`, component: Index, context: { slug: latest } })
+  await createRedirect({
+    fromPath: "/",
+    toPath: `/${latest}`,
+    redirectInBrowser: true,
+    statusCode: 200,
+  })
   await createPage({
     path: `/calendar`,
     component: Calendar,
@@ -108,10 +114,11 @@ const fromEvernote = async createPage => {
 }
 
 // * Entry point
-exports.createPages = async ({ actions: { createPage } }) => {
+exports.createPages = async ({ actions }) => {
   try {
-    const pages = await fromDropbox(createPage) // ? fromEvernote(createPage)
-    await deploy({ createPage, pages }) // 🎉
+    const source = fromDropbox // ? fromEvernote
+    const pages = await source(actions.createPage)
+    await deploy({ actions, pages }) // 🎉
   } catch (error) {
     console.error(chalk.red(JSON.stringify(error)))
   }
