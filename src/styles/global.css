@@ -14,24 +14,35 @@ main {
 article {
   font-family: "Alegreya", serif;
   font-size: 1.5rem;
-  line-height: 2.4rem;
+  line-height: 2.45rem;
   margin-top: 2rem;
+  margin-bottom: 3rem;
 }
-
-h2 {
+footer {
+  text-align: center;
+}
+header h2 {
   display: inline-block;
   margin-bottom: 0;
+  margin: 0;
+}
+article h2 {
+  text-align: right;
+  font-size: 1.5rem;
 }
 nav {
   margin-top: 0rem;
 }
-nav a {
+a {
+  text-decoration: none;
+}
+nav a,
+nav span {
   font-size: 1.2rem;
+}
+header nav span {
+  font-weight: bold;
 }
 img {
   width: 100%;
-}
-footer {
-  padding-top: 6rem;
-  text-align: center;
 }

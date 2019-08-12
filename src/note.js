@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown"
 // ? styling from https://basecamp.com/shapeup/1.5-chapter-06 // ff-meta-serif-web-pro
 
 const NavButton = ({ to, text }) =>
-  to ? <Link to={to} children={text} /> : " "
+  to ? <Link to={to} children={text} /> : <span>{text}</span>
 
 const Note = ({
   pageContext: {
@@ -17,21 +17,19 @@ const Note = ({
 }) => {
   return (
     <main>
-      <h2>🚀{date}</h2>
-      <nav>
-        <NavButton
-          to={previous}
-          text={previous ? `< ${previous.split(".")[1]}` : "previous"}
-        />
-        {" - "}
-        <NavButton to={next} text={next ? `${next.split(".")[1]} >` : "next"} />
-      </nav>
-      <article children={<ReactMarkdown source={content} />}></article>
+      <header>
+        <h2>🚀{date}</h2>
+        <nav>{start && <NavButton to={start} text="< start" />}</nav>
+      </header>
+      <article>
+        <ReactMarkdown source={content} />
+        <NavButton to={next} text={<h2>next ></h2>} />
+      </article>
       <footer>
         <nav>
-          <NavButton to={start} text="<< start" />
-          <NavButton to="/calendar" text="🗓" />
-          <NavButton to={end} text="latest >>" />
+          {previous && <NavButton to={previous} text={`< back`} />}
+          {previous && " - "}
+          <NavButton to="/calendar" text={"  🗓 "} />
         </nav>
       </footer>
     </main>
