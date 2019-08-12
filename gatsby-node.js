@@ -110,7 +110,6 @@ const fromEvernote = async createPage => {
 exports.createPages = async ({ actions: { createPage } }) => {
   try {
     const pages = await fromDropbox(createPage) // fromEvernote(createPage) //
-    console.log({ pages })
     await deploy({ createPage, pages }) // 🎉
   } catch (error) {
     console.error(chalk.red(JSON.stringify(error)))
