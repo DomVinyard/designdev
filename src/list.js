@@ -5,15 +5,20 @@ import ReactMarkdown from "react-markdown"
 const List = ({ pageContext: { pages } }) => {
   return (
     <main>
-      <h1>dom.fyi</h1>
+      <h1>🚀dom.fyi</h1>
       <nav>
-        {pages.map(({ date, content }) => (
+        {pages.map(({ date, content, nav: { isFirst, isLatest } }) => (
           <div>
             <Link to={date}>
-              <label>{date}</label>
+              <label>{isFirst ? "start" : date}</label>
               <span>
                 <ReactMarkdown
-                  source={content.split(`\n`).filter(Boolean)[0]}
+                  source={content
+                    .split(`\n`)
+                    .filter(Boolean)[0]
+                    .replace(/([.?!:])\s*(?=[A-Z])/g, "$1|")
+                    .split("|")[0]
+                    .slice(0, -1)}
                 />
               </span>
             </Link>

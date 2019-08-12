@@ -58,7 +58,7 @@ nav span p {
   pointer-events: none;
 }
 nav label {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 nav span p a {
   color: #bbb !important;

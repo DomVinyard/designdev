@@ -45,10 +45,13 @@ exports.createPages = async ({ actions: { createPage, createRedirect } }) => {
       const end = pages[0].date !== page.date ? pages[0].date : null
       const previous = (pages[i + 1] || {}).date
       const next = (pages[i - 1] || {}).date
+      const isFirst = i === pages.length - 1
+      const isLatest = i === 0
+      page.nav = { start, next, isFirst, isLatest }
       await createPage({
         path: `${page.date}`,
         component: path.resolve(`./src/note.js`),
-        context: { ...page, nav: { start, previous, next, end } },
+        context: page,
       })
     })
     //

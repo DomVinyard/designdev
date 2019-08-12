@@ -9,7 +9,7 @@ const NavButton = ({ to, text }) =>
 const Note = ({
   pageContext: {
     date,
-    nav: { start, next },
+    nav: { start, next, isFirst, isLatest },
     content,
   },
 }) => {
@@ -26,7 +26,7 @@ const Note = ({
         ) : (
           <NavButton to="/list" text={"‹ view all"} />
         )}
-        <h1>🚀{date}</h1>
+        <h1>🚀{isFirst ? "dom.fyi" : date}</h1>
       </header>
       <article>
         <ReactMarkdown source={content} />
