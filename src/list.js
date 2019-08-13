@@ -1,11 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Helmet } from "react-helmet"
 import ReactMarkdown from "react-markdown"
 
 const List = ({ pageContext: { pages } }) => {
   return (
     <main>
-      <h1>🚀dom.fyi</h1>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>dom.fyi</title>
+        <link rel="canonical" href={`https://dom.fyi/list`} />
+      </Helmet>
+      <header>
+        <h1>🚀dom.fyi</h1>
+      </header>
       <nav>
         {pages.map(({ date, content, nav: { isFirst, isLatest } }) => (
           <div>
