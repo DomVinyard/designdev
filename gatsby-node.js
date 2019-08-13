@@ -24,14 +24,16 @@ exports.createPages = async ({ actions: { createPage, createRedirect } }) => {
         const rawContent = (await file._data).compressedContent
         if (!rawContent) return false
         const [firstLine, ...content] = rawContent.toString().split(`\n`)
-        const date = file.name.slice(7).replace(".txt", "")
+        const date = file.name.slice(7, -4)
+        const isValid = /^\d{4}\.\d{1,3}$/.test(date)
+        if (!isValid) return false
         return { date, content: content.join(`\n`), firstLine }
       })
     ))
       .filter(file => {
         //
         // Exclude non-dates and unpublished
-        if (!file.content) return false
+        if (!file || !file.content) return false
         // TODO: regex match title
         if (!file.firstLine.trim().startsWith("🚀")) return false
         return true
