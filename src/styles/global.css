@@ -15,9 +15,23 @@ main {
 article,
 nav {
   font-size: 1.5rem;
-  line-height: 2.45rem;
+  line-height: 2.5rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+header h1 {
+  margin-bottom: 0;
+  margin: 0;
+  margin-top: 2.5rem;
+  font-size: 2rem;
+}
+footer h2 a {
+  font-size: 1.5rem;
+}
+nav div {
+  height: 36px;
+  overflow: hidden;
+  margin-top: 0.5rem;
 }
 @media only screen and (max-width: 900px) {
   article,
@@ -26,6 +40,16 @@ nav {
     line-height: 2.25rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  footer h2 a {
+    font-size: 1.3rem;
+  }
+  nav div {
+    height: 32px;
+    margin-top: 0.3rem;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -36,13 +60,18 @@ nav {
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
+  header h1 {
+    font-size: 1.6rem;
+  }
+  footer h2 a {
+    font-size: 1.1rem;
+  }
+  nav div {
+    height: 26px;
+    margin-top: 0.2rem;
+  }
 }
 
-header h1 {
-  margin-bottom: 0;
-  margin: 0;
-  margin-top: 2.5rem;
-}
 header a {
   font-size: 1.2rem;
   font-weight: bold;
@@ -50,9 +79,6 @@ header a {
 footer {
   text-align: right;
   margin-bottom: 2rem;
-}
-footer h2 a {
-  font-size: 1.5rem;
 }
 a {
   text-decoration: none;
@@ -63,6 +89,9 @@ a:visited {
 }
 article a {
   border-bottom: 1px solid #555;
+}
+nav a {
+  border-bottom: 0px;
 }
 blockquote {
   border-left: 6px solid #ddd;
@@ -82,9 +111,4 @@ nav label {
 }
 nav span p a {
   color: #bbb !important;
-}
-nav div {
-  height: 36px;
-  overflow: hidden;
-  margin-top: 0.5rem;
 }
