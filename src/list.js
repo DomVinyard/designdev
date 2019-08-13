@@ -14,7 +14,7 @@ const List = ({ pageContext: { pages } }) => {
       <header>
         <h1>🚀dom.fyi</h1>
       </header>
-      <article>A daily update on Design & Dev.</article>
+      <article>A daily update about Design & Dev.</article>
       <nav>
         {pages.map(({ date, content, nav: { isFirst, isLatest } }) => (
           <div>
