@@ -16,7 +16,7 @@ const List = ({ pageContext: { pages } }) => {
                   source={content
                     .split(`\n`)
                     .filter(Boolean)[0]
-                    .replace(/([.?!:])\s*(?=[A-Z])/g, "$1|")
+                    .replace(/([.?!,:])\s*(?=[A-Z])/g, "$1|")
                     .split("|")[0]
                     .slice(0, -1)}
                 />

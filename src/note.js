@@ -21,7 +21,7 @@ const Note = ({
         <link rel="canonical" href={`https://dom.fyi/${date}`} />
       </Helmet>
       <header>
-        {start ? (
+        {!isFirst ? (
           <NavButton to={start} text="‹ start" />
         ) : (
           <NavButton to="/list" text={"‹ view all"} />
