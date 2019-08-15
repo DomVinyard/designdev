@@ -1,3 +1,4 @@
+require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -5,6 +6,15 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-dropbox`,
+      options: {
+        accessToken: process.env.DROPBOX_TOKEN,
+        extensions: [".gif", ".jpg", ".png", ".md", ".txt"],
+        path: "/domfyi",
+        recursive: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
