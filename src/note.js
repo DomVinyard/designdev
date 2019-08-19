@@ -1,18 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
-import ReactMarkdown from "react-markdown"
+// import ReactMarkdown from "react-markdown"
+import { Link, graphql } from "gatsby"
 
-const NavButton = ({ to, text }) =>
-  to ? <Link to={to} children={text} /> : <span>{text}</span>
+export const query = graphql`
+  query($title: String) {
+    dropbox: dropboxNode(name: { eq: $title }) {
+      note: localFile {
+        date: name
+        content: childMarkdownRemark {
+          html
+          rawMarkdownBody
+        }
+      }
+    }
+  }
+`
 
-const Note = ({
-  pageContext: {
-    date,
-    nav: { start, next, isFirst, isLatest },
-    content,
-  },
-}) => {
+export default ({ data, pageContext: { content } }) => {
+  console.log(data)
+  // const date = data.dropbo
+  return <div>hi</div>
+  const start = false
+  const next = false
+  const isFirst = false
+  // console.log("hi", { data })
   return (
     <main>
       <Helmet>
@@ -22,24 +34,26 @@ const Note = ({
       </Helmet>
       <header>
         {!isFirst ? (
-          <NavButton to={start} text="‹ start" />
+          <Link to={start} children={"‹ start"} />
         ) : (
-          <NavButton to="/list" text={"‹ view all"} />
+          <Link to="/list" children={"‹ view all"} />
         )}
         <h1>🚀{isFirst ? "dom.fyi" : date}</h1>
       </header>
-      <article>
-        <ReactMarkdown source={content} />
-      </article>
+      {data.html && (
+        <article
+          dangerouslySetInnerHTML={{
+            __html: data.html.split("<p>🚀</p>\n")[1],
+          }}
+        />
+      )}
       <footer>
         {next && (
           <h2>
-            <NavButton to={next} text="next day >" />
+            <Link to={next} children={"next day ›"} />
           </h2>
         )}
       </footer>
     </main>
   )
 }
-
-export default Note
