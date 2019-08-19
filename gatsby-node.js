@@ -60,14 +60,13 @@ exports.createPages = async ({
   // return
   // console.log({ result })
   // console.log(result.data.dropbox.notes)
-  result.data.dropbox.notes.forEach(node => {
-    console.log({ node })
-    return
+  result.data.dropbox.notes.forEach(({ note }) => {
     if (note && note.date && note.content) {
+      // console.log({ note, date: note.date })
       createPage({
         path: note.date,
         component: path.resolve(`./src/note.js`),
-        context: { title: note.date, content: note.content.html },
+        context: { date: note.date, content: note.content.html },
       })
     }
   })

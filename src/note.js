@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
 export const query = graphql`
-  query($title: String) {
-    dropbox: dropboxNode(name: { eq: $title }) {
+  query($date: String) {
+    dropbox: dropboxNode(localFile: { name: { eq: $date } }) {
       note: localFile {
         date: name
         content: childMarkdownRemark {
@@ -17,10 +17,20 @@ export const query = graphql`
   }
 `
 
-export default ({ data, pageContext: { content } }) => {
-  console.log(data)
+export default ({
+  data: {
+    dropbox: {
+      note: {
+        date,
+        content: { html },
+      },
+    },
+  },
+  pageContext: { content },
+}) => {
+  console.log(date, html)
   // const date = data.dropbo
-  return <div>hi</div>
+  // return <div>hi</div>
   const start = false
   const next = false
   const isFirst = false
@@ -40,10 +50,10 @@ export default ({ data, pageContext: { content } }) => {
         )}
         <h1>🚀{isFirst ? "dom.fyi" : date}</h1>
       </header>
-      {data.html && (
+      {html && (
         <article
           dangerouslySetInnerHTML={{
-            __html: data.html.split("<p>🚀</p>\n")[1],
+            __html: html.split("<p>🚀</p>\n")[1],
           }}
         />
       )}
