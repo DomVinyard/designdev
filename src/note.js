@@ -41,7 +41,7 @@ export default ({
     </header>
     {html && (
       <article
-        dangerouslySetInnerHTML={{ __html: html.split("<p>🚀</p>\n")[1] }}
+        dangerouslySetInnerHTML={{ __html: html.replace("<p>🚀</p>\n", "") }}
       />
     )}
     <footer>
