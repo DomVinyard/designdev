@@ -1,6 +1,5 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-// import ReactMarkdown from "react-markdown"
 import { Link, graphql } from "gatsby"
 
 export const query = graphql`
@@ -10,13 +9,11 @@ export const query = graphql`
         date: name
         content: childMarkdownRemark {
           html
-          rawMarkdownBody
         }
       }
     }
   }
 `
-
 export default ({
   data: {
     dropbox: {
