@@ -10,7 +10,6 @@ export default ({ pageContext: { notes } }) => (
     </Helmet>
     <h1>🚀dom.fyi</h1>
     <nav>
-      <p>A daily update about Design & Dev.</p>
       {notes.map(({ date, content }, i) => (
         <div>
           <Link to={`/${date}`}>
