@@ -2,6 +2,16 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
+const YearDay = (arg, options) => {
+  if (typeof arg === "string") {
+    const valid = /^\d{4}\.\d{1,3}$/.test(arg)
+    if (!valid) return new Error("invalid string")
+    const [year, day] = arg.split(".")
+    const ISO8601 = `${year}.${day.padStart(3, "0")}`
+    return moment(ISO8601)
+  }
+}
+
 export const query = graphql`
   query($date: String) {
     dropbox: dropboxNode(localFile: { name: { eq: $date } }) {
@@ -9,6 +19,7 @@ export const query = graphql`
         date: name
         content: childMarkdownRemark {
           html
+          excerpt
         }
       }
     }
@@ -19,37 +30,40 @@ export default ({
     dropbox: {
       note: {
         date,
-        content: { html },
+        content: { html, excerpt },
       },
     },
   },
   pageContext: { next, first },
-}) => (
-  <main>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{date}</title>
-      <link rel="canonical" href={`https://dom.fyi/${date}`} />
-    </Helmet>
-    <header>
-      {first ? (
-        <Link to={`./${first}`} children={"‹ start"} />
-      ) : (
-        <Link to="/list" children={"‹ view all"} />
+}) => {
+  const diff = next && YearDay(date).diff(YearDay(next), "days")
+  const nextText = diff === 1 ? "next day" : `${diff} days later`
+  return (
+    <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{date}</title>
+        <link rel="canonical" href={`https://dom.fyi/${date}`} />
+        <meta property="og:url" content={`https://dom.fyi/${date}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`dom.fyi ${date}`} />
+        <meta property="og:description" content={excerpt} />
+        <meta property="og:image" content="images/icon.png" />
+      </Helmet>
+      <header>
+        <Link to="/list" children={first ? "‹ start" : "‹ view all"} />
+        <h1>🚀{!first ? "dom.fyi" : date}</h1>
+      </header>
+      {html && (
+        <article
+          dangerouslySetInnerHTML={{ __html: html.replace("<p>🚀</p>\n", "") }}
+        />
       )}
-      <h1>🚀{!first ? "dom.fyi" : date}</h1>
-    </header>
-    {html && (
-      <article
-        dangerouslySetInnerHTML={{ __html: html.replace("<p>🚀</p>\n", "") }}
-      />
-    )}
-    <footer>
-      {next && (
-        <h2>
-          <Link to={next} children={"next day ›"} />
-        </h2>
-      )}
-    </footer>
-  </main>
-)
+      <footer>
+        {next && (
+          <h2 children={<Link to={next} children={`${nextText} ›`} />} />
+        )}
+      </footer>
+    </main>
+  )
+}
