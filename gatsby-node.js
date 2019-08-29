@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: note.date,
       component: resolve(`./src/note.js`),
       context: {
-        date: i === 0 ? "start" : note.date,
+        date: note.date,
         next: notes[i + 1] && `/${notes[i + 1].date}`,
         first: i > 0 ? "" : `/${notes[0].date}`,
       },
