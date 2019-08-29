@@ -8,7 +8,7 @@ exports.handler = async function(event, context, callback) {
   callback(null, { statusCode: 200, body: challenge })
 }
 
-require("dotenv").config()
-const { BUILD_PROD } = process.env
-if (!BUILD_PROD) throw "where is prod?"
-exports.handler = () => require("axios").post(BUILD_PROD)
+// require("dotenv").config()
+// const { BUILD_PROD } = process.env
+// if (!BUILD_PROD) throw "where is prod?"
+// exports.handler = () => require("axios").post(BUILD_PROD)
