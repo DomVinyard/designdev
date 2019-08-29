@@ -1,18 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-
-import moment from 'moment'
-const YearDay = (arg, options) => {
-  if (typeof arg === "string") {
-    const valid = /^\d{4}\.\d{1,3}$/.test(arg)
-    if (!valid) return new Error("invalid string")
-    const [year, day] = arg.split(".")
-    const ISO8601 = `${year}-${day.padStart(3, "0")}`
-    // console.log(moment(ISO8601))
-    return moment(ISO8601)
-  }
-}
+import YearDay from './yearday'
 
 export const query = graphql`
   query($date: String) {
