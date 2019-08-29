@@ -61,7 +61,6 @@ module.exports = {
     },
 
     `gatsby-plugin-react-helmet`,
-
     // You can have multiple instances of this plugin
     // to read source nodes from different locations on your
     // filesystem.
