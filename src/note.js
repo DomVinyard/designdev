@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-
+//
 export const query = graphql`
   query($date: String) {
     dropbox: dropboxNode(localFile: { name: { eq: $date } }) {
