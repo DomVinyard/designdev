@@ -8,13 +8,13 @@ export default ({ pageContext: { notes } }) => (
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    <h1>🚀dom.fyi</h1>
+    <h1>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content }, i) => (
         <div>
           <Link to={`/${date}`}>
             <label style={{ fontWeight: i === 0 ? "bold" : "normal" }}>
-              {i === 0 ? "start" : date}
+              {i === 0 ? "start"  : date}
               {i === notes.length - 1 && "⟶ "}
             </label>
             <span>{content.excerpt.replace("🚀", "").split(mark)[0]}</span>
@@ -25,4 +25,4 @@ export default ({ pageContext: { notes } }) => (
   </main>
 )
 
-const mark = /[.:;?!~,`"&|()<>{}\[\]\r\n/\\]+/
+const mark = /[.:;?!~,`"&|()<>{}[\]\r\n/\\]+/

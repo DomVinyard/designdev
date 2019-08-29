@@ -44,7 +44,7 @@ export default ({
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{date}</title>
+        <title>{`🚀 dom.fyi`}</title>
         <link rel="canonical" href={`https://dom.fyi/${date}`} />
         <meta property="og:url" content={`https://dom.fyi/${date}`} />
         <meta property="og:type" content="article" />
@@ -54,7 +54,7 @@ export default ({
       </Helmet>
       <header>
         <Link to="/list" children={first ? "‹ view all" : "‹ start"} />
-        <h1><span role="img">🚀</span>{first ? "dom.fyi" : date}</h1>
+        <h1>{`🚀`}{first ? "start" : date}</h1>
       </header>
       {html && (
         <article
