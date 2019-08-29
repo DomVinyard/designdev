@@ -2,7 +2,8 @@
 
 Builds [dom.fyi](https://domfyi.netlify.com).
 
-ENV
-
-DROPBOX_TOKEN: uuid for the build script
-NETLIFY_BUILD_HOOK: 
+```
+# .env
+DROPBOX_TOKEN: string # used by gatsby-config.js -> gatsby-source-dropbox
+NETLIFY_BUILD_HOOK: url # endpoint for build script
+```
