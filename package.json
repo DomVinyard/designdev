@@ -1,5 +1,5 @@
 {
-  "name": "dom",
+  "name": "domfyi",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
@@ -23,6 +23,7 @@
     "gatsby-source-dropbox": "^0.1.1",
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-remark": "^2.6.14",
+    "gatsby-transformer-sharp": "^2.2.12",
     "github-api": "^3.2.2",
     "isomorphic-fetch": "^2.2.1",
     "jszip": "^3.2.2",
