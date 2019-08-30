@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-import YearDay from './yearday'
+import YearDay from "./yearday"
 
 export const query = graphql`
   query($date: String) {
@@ -33,7 +33,7 @@ export default ({
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{`🚀 dom.fyi`}</title>
+        <title>dom.fyi</title>
         <link rel="canonical" href={`https://dom.fyi/${date}`} />
         <meta property="og:url" content={`https://dom.fyi/${date}`} />
         <meta property="og:type" content="article" />
@@ -43,7 +43,10 @@ export default ({
       </Helmet>
       <header>
         <Link to="/list" children={first ? "‹ view all" : "‹ start"} />
-        <h1>{`🚀`}{first ? "start" : date}</h1>
+        <h1>
+          {`🚀`}
+          {first ? "start" : date}
+        </h1>
       </header>
       {html && (
         <article
