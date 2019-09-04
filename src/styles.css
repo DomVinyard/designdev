@@ -37,6 +37,52 @@ nav div {
   overflow: hidden;
   margin-top: 0.5rem;
 }
+
+header a {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+footer {
+  text-align: right;
+  margin-bottom: 2rem;
+}
+a {
+  text-decoration: none;
+}
+a,
+a:visited {
+  color: #555;
+}
+article a {
+  border-bottom: 1px solid #555;
+}
+nav a {
+  border-bottom: 0px;
+}
+blockquote {
+  border-left: 6px solid #ddd;
+  padding-left: 1rem;
+  margin-left: 0;
+}
+del {
+  opacity: 0.2;
+}
+nav span p {
+  color: #bbb;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  cursor: pointer;
+}
+nav label {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  color: black;
+}
+nav span p a {
+  color: #bbb !important;
+}
+/* Text scaling on narrow displays */
 @media only screen and (max-width: 900px) {
   article,
   nav {
@@ -74,46 +120,4 @@ nav div {
     height: 26px;
     margin-top: 0.2rem;
   }
-}
-
-header a {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-footer {
-  text-align: right;
-  margin-bottom: 2rem;
-}
-a {
-  text-decoration: none;
-}
-a,
-a:visited {
-  color: #555;
-}
-article a {
-  border-bottom: 1px solid #555;
-}
-nav a {
-  border-bottom: 0px;
-}
-blockquote {
-  border-left: 6px solid #ddd;
-  padding-left: 1rem;
-  margin-left: 0;
-}
-nav span p {
-  color: #bbb;
-  margin: 0;
-  padding: 0;
-  display: inline;
-  cursor: pointer;
-}
-nav label {
-  margin-right: 0.5rem;
-  cursor: pointer;
-  color: black;
-}
-nav span p a {
-  color: #bbb !important;
 }
