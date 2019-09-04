@@ -4,9 +4,9 @@
 
 Notes-app as a backend.
 
-🚀 [Here’s the plan]
-🚀 [Blog is live 🎉]
-🚀 [My deployment works like this]
+- 🚀 [Here’s the plan]
+- 🚀 [Blog is live 🎉]
+- 🚀 [My deployment works like this]
 
 ### usage
 
