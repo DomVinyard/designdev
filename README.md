@@ -4,20 +4,18 @@
 
 Notes-app as a backend.
 
-🚀 [Here’s the plan]
-🚀 [Blog is live 🎉]
-🚀 [My deployment works like this]
+- 🚀 [Here’s the plan]
+- 🚀 [Blog is live 🎉]
+- 🚀 [My deployment works like this]
 
-### usage
+### Usage
 
 If you want to do the same thing, clone this repo and set the following environment variables.
 
 ```
-# .env
-DROPBOX_TOKEN: string # used by gatsby-config.js -> gatsby-source-dropbox
-DROPBOX_FOLDER: string # the name of the folder in dropbox. folder must be at the top level.
-
-NETLIFY_BUILD_HOOK: url # endpoint for build script
+DROPBOX_TOKEN=string # used by gatsby-config.js -> gatsby-source-dropbox
+DROPBOX_FOLDER=string # the name of the folder in dropbox. folder must be at the top level.
+NETLIFY_BUILD_HOOK=url # endpoint for build script
 ```
 
 - Must host with Netlify (edit gatsby-config to configure something else)
