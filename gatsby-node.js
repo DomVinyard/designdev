@@ -1,6 +1,10 @@
-const { resolve } = require("path")
+/*
+  Fetch all notes from Dropbox (configured in /gatsby-config).
+  Iterate through, build a page for each.
+  Also build pages for index and list.
+*/
 
-// dom.fyi. get all notes from dropbox
+const { resolve } = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query GetNotes {
@@ -18,28 +22,23 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   if (!data) throw "where is dropbox?"
   const isPublished = excerpt => excerpt.trim().startsWith("🚀")
-  const isDevMode = process.env.NODE_ENV === "development"
   const notes = data.dropbox.notes
     .filter(({ note }) => note && note.date && note.content) // build every .md file
     .filter(({ note: { date } }) => /^\d{4}\.\d{1,3}$/.test(date)) // with a valid date
-    .filter(({ note }) => isDevMode || isPublished(note.content.excerpt)) // and a 🚀
+    .filter(({ note }) => isPublished(note.content.excerpt)) // and a 🚀
     .map(({ note }) => note)
-  notes.forEach((note, i) =>
+  notes.forEach((note, i) => {
+    const next = notes[i + 1] && `/${notes[i + 1].date}`
+    const first = i > 0 ? "" : `/${notes[0].date}`
     actions.createPage({
       path: note.date,
-      component: resolve(`./src/note.js`),
-      context: {
-        date: note.date,
-        next: notes[i + 1] && `/${notes[i + 1].date}`,
-        first: i > 0 ? "" : `/${notes[0].date}`,
-      },
+      component: resolve(`./src/Template.Note.js`),
+      context: { date: note.date, next, first },
     })
-  )
-
-  // list page and home page
+  })
   await actions.createPage({
     path: `/list`,
-    component: resolve(`./src/list.js`),
+    component: resolve(`./src/Template.List.js`),
     context: { notes },
   })
   return await actions.createRedirect({

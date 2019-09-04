@@ -1,8 +1,12 @@
+/*
+  This config is a mess. Clean up.
+*/
+
 require("dotenv").config()
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `dom.fyi`,
+    description: `daily blog.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -79,7 +83,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images/`,
+        path: `${__dirname}/src/`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -94,7 +98,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
