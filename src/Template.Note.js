@@ -13,8 +13,9 @@ export const query = graphql`
       note: localFile {
         date: name
         content: childMarkdownRemark {
-          html
           excerpt
+          html
+          rawMarkdownBody
         }
       }
     }
@@ -25,7 +26,7 @@ export default ({
     dropbox: {
       note: {
         date,
-        content: { html, excerpt },
+        content: { html, excerpt, rawMarkdownBody },
       },
     },
   },
