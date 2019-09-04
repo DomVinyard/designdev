@@ -19,7 +19,7 @@ NETLIFY_BUILD_HOOK=url # endpoint for build script
 ```
 
 - Must host with Netlify (edit gatsby-config to configure something else)
-- Must tell the [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
+- Must create a new [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
 - I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
 
 [here’s the plan]: https://dom.fyi/2019.218
