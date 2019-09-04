@@ -5,7 +5,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-import YearDay from "./YearDay.js"
+import YearDay from "./yearday"
 
 export const query = graphql`
   query($date: String) {
