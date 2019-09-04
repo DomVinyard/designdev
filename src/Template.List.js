@@ -1,5 +1,6 @@
 /*
-  Available at /list. Acts as a directory of all notes.
+  Available at https://dom.fyi/list.
+  Acts as a directory of all notes.
 */
 
 import React from "react"
@@ -29,4 +30,5 @@ export default ({ pageContext: { notes } }) => (
   </main>
 )
 
+// Truncate each note at the first punctuation mark as a description.
 const mark = /[.:;?!~,`"&|()<>{}[\]\r\n/\\]+/

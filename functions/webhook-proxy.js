@@ -6,9 +6,8 @@
 */
 
 require("dotenv").config()
-const { BUILD_PROD } = process.env
-if (!BUILD_PROD) throw "where is prod?"
-exports.handler = () => require("axios").post(NETLIFY_BUILD_HOOK)
+if (!process.env.NETLIFY_BUILD_HOOK) throw "where is prod?"
+exports.handler = () => require("axios").post(process.env.NETLIFY_BUILD_HOOK)
 
 /*
     The `NETLIFY_BUILD_HOOK` env variable contains an endpoint 
