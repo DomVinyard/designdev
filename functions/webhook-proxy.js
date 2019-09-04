@@ -8,7 +8,7 @@
 require("dotenv").config()
 if (!process.env.NETLIFY_BUILD_HOOK) throw "where is prod?"
 
-exports.handler = ({ queryStringParameters: challenge }) => {
-  if (challenge) return callback(null, { statusCode: 200, body: challenge }) // confirm webhook location with dropbox
+exports.handler = ({ queryStringParameters: challenge }, _, res) => {
+  if (challenge) return res(null, { statusCode: 200, body: challenge }) // confirm webhook location with dropbox
   require("axios").post(process.env.NETLIFY_BUILD_HOOK)
 }
