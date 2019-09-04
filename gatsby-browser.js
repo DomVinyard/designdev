@@ -1,1 +1,5 @@
-import "./src/styles/global.css"
+/* 
+  Import the stylessheet at runtime.
+*/
+
+import "./src/styles.css"
