@@ -12,3 +12,5 @@ exports.handler = () => require("axios").post(NETLIFY_BUILD_HOOK)
 The `NETLIFY_BUILD_HOOK` environment variable contains an endpoint 
 which triggers all of the pages to build and deploy (see /gatsby-node). 
 */
+
+// test automater
