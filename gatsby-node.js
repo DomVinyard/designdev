@@ -24,10 +24,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const isPublished = excerpt => excerpt.trim().startsWith("🚀")
   const isDevMode = process.env.NODE_ENV === "development"
   const notes = data.dropbox.notes
-    .filter(({ note }) => note && note.date && note.content) // build every .md file
-    .filter(({ note: { date } }) => /^\d{4}\.\d{1,3}$/.test(date)) // with a valid date
-    .filter(({ note }) => isDevMode || isPublished(note.content.excerpt)) // and a 🚀
     .map(({ note }) => note)
+    .filter(note => note && note.date && note.content) // build every .md file
+    .filter(({ date }) => /^\d{4}\.\d{1,3}$/.test(date)) // with a valid date
+    .filter(note => isDevMode || isPublished(note.content.excerpt)) // and a 🚀
   notes.forEach((note, i) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const first = i > 0 ? "" : `/${notes[0].date}`

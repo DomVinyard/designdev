@@ -6,10 +6,12 @@
 */
 
 require("dotenv").config()
+const { DROPBOX_TOKEN, DROPBOX_FOLDER } = process.env
+if (!DROPBOX_TOKEN || !DROPBOX_TOKEN) throw "where is dropbox?"
 const Dropbox = {
-  accessToken: process.env.DROPBOX_TOKEN,
+  accessToken: DROPBOX_TOKEN,
   extensions: [".md"],
-  path: "/domfyi", // notes directory
+  path: `/${DROPBOX_FOLDER}`, // notes directory
   recursive: false,
 }
 const Filesystem = { name: `notes`, path: `${__dirname}/src/` }
