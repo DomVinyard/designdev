@@ -1,3 +1,8 @@
+/*
+  Available at https://dom.fyi/list.
+  Acts as a directory of all notes.
+*/
+
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
@@ -14,7 +19,7 @@ export default ({ pageContext: { notes } }) => (
         <div>
           <Link to={`/${date}`}>
             <label style={{ fontWeight: i === 0 ? "bold" : "normal" }}>
-              {i === 0 ? "start"  : date}
+              {i === 0 ? "start" : date}
               {i === notes.length - 1 && "⟶ "}
             </label>
             <span>{content.excerpt.replace("🚀", "").split(mark)[0]}</span>
@@ -25,4 +30,5 @@ export default ({ pageContext: { notes } }) => (
   </main>
 )
 
+// Truncate each note at the first punctuation mark as a description.
 const mark = /[.:;?!~,`"&|()<>{}[\]\r\n/\\]+/

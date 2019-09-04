@@ -1,3 +1,7 @@
+/* 
+  An individual dom.fyi note.
+*/
+
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
@@ -9,8 +13,9 @@ export const query = graphql`
       note: localFile {
         date: name
         content: childMarkdownRemark {
-          html
           excerpt
+          html
+          rawMarkdownBody
         }
       }
     }
@@ -21,7 +26,7 @@ export default ({
     dropbox: {
       note: {
         date,
-        content: { html, excerpt },
+        content: { html, excerpt, rawMarkdownBody },
       },
     },
   },
@@ -39,7 +44,7 @@ export default ({
         <meta property="og:type" content="article" />
         <meta property="og:title" content={`dom.fyi ${date}`} />
         <meta property="og:description" content={excerpt} />
-        <meta property="og:image" content="images/icon.png" />
+        <meta property="og:image" content="icon.png" />
       </Helmet>
       <header>
         <Link to="/list" children={first ? "‹ view all" : "‹ start"} />

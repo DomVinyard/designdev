@@ -1,20 +1,32 @@
+/* 
+  Parser for YearDay format dates
+  Docs at https://dom.fyi/2019.220
 
-import moment from 'moment'
+  Returns a YearDate object, which is actually just a momentjs object
+*/
+
+import moment from "moment" // https://momentjs.com
+
+// string to date
 export default (arg, options = {}) => {
-    if (typeof arg === "string") {
-      const valid = /^\d{4}\.\d{1,3}$/.test(arg)
-      if (!valid) return new Error("invalid string")
-      const [year, day] = arg.split(".")
-      const ISO8601 = `${year}-${day.padStart(3, "0")}`
-      return moment(ISO8601)
-    }
-    if (typeof arg === 'date') {
-      arg.toString = ({time}) => 'xxxx.xxx'
-      arg.isValid = false
-    }
+  if (typeof arg === "string") {
+    // TODO: time
+    const valid = /^\d{4}\.\d{1,3}$/.test(arg)
+    if (!valid) return new Error("invalid date")
+    const [year, day] = arg.split(".")
+    const paddedDay = day.padStart(3, "0")
+    const ISO8601 = [year, paddedDay].join("-")
+    if (options.world) return moment(ISO8601).add("years", 10000) // https://en.wikipedia.org/wiki/Holocene_calendar
+    return moment(ISO8601)
   }
 
-// YearDay(string) // to date (with properties)
-// YearDay(string).isValid // unless native invalid date
-// YearDay(date).toString({ time: false }) // default true if present 
-// YearDay(date, { world: true })
+  // TODO: date to string
+  if (arg instanceof Date) {
+    const momentObject = moment(arg)
+    momentObject.toString = ({ time }) => {
+      if (!time) return "xxxx.xxx"
+      return "xxxx.xxx.xxxxxxx"
+    }
+    return momentObject
+  }
+}

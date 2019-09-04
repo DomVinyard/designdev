@@ -1,104 +1,39 @@
+/*
+    Configure Gatsby app to read from a Dropbox folder and expose
+    the contents as entities in the filesystem.
+
+    Requires .env variable `DROPBOX_TOKEN`
+*/
+
 require("dotenv").config()
+const { DROPBOX_TOKEN, DROPBOX_FOLDER } = process.env
+if (!DROPBOX_TOKEN || !DROPBOX_TOKEN) throw "where is dropbox?"
+const Dropbox = {
+  accessToken: DROPBOX_TOKEN,
+  extensions: [".md"],
+  path: `/${DROPBOX_FOLDER}`, // notes directory
+  recursive: false,
+}
+const Filesystem = { name: `notes`, path: `${__dirname}/src/` }
+const Manifest = {
+  name: `dom.fyi`,
+  short_name: `dom.fyi`,
+  start_url: `/`,
+  icon: `src/icon.png`,
+}
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `dom.fyi`,
+    description: `daily blog.`,
+    author: `@domfyi`,
   },
   plugins: [
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        // CommonMark mode (default: true)
-        commonmark: true,
-        // Footnotes mode (default: true)
-        footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
-        // GitHub Flavored Markdown mode (default: true)
-        gfm: true,
-        // Plugins configs
-        plugins: [
-          `gatsby-remark-copy-linked-files`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 590,
-            },
-          },
-        ],
-      },
-    },
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 590,
-            },
-          },
-        ],
-      },
-    },
-
-    {
-      resolve: `gatsby-source-dropbox`,
-      options: {
-        accessToken: process.env.DROPBOX_TOKEN,
-        extensions: [".gif", ".jpg", ".png", ".md"],
-        path: "/domfyi",
-        recursive: false,
-      },
-    },
-
-    `gatsby-plugin-react-helmet`,
-    // You can have multiple instances of this plugin
-    // to read source nodes from different locations on your
-    // filesystem.
-    //
-    // The following sets up the Jekyll pattern of having a
-    // "pages" directory for Markdown files and a "data" directory
-    // for `.json`, `.yaml`, `.csv`.
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `notes`,
-        path: `${__dirname}/src/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    { resolve: `gatsby-source-dropbox`, options: Dropbox }, // read from dropbox to filesystem
+    { resolve: `gatsby-source-filesystem`, options: Filesystem }, // from filesystem to environment
+    `gatsby-plugin-offline`, // works offline
+    `gatsby-transformer-remark`, // converts markdown to html
+    `gatsby-plugin-react-helmet`, // add page headers
+    `gatsby-plugin-netlify`, // add Netlify security headers
+    { resolve: `gatsby-plugin-manifest`, options: Manifest }, // metadata
   ],
 }
