@@ -1,6 +1,6 @@
 /*
     Every time Dropbox updates (because a note was added or edited),
-    Dropbox will fire a webhook to here 👇👇👇.
+    Dropbox will fire a webhook to here 👇📝👇.
 
     Requires .env variable `NETLIFY_BUILD_HOOK`
 */
