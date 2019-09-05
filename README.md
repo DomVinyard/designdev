@@ -24,7 +24,7 @@ DROPBOX_FOLDER=string # The folder with your .md files
 2. Get a [Dropbox Developers] token and create a folder in Dropbox for your notes
 3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
 
-### Random blog posts
+### Sample blog posts
 
 - 🚂 [first post]
 - 📚 [first book review]
