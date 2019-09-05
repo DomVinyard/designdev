@@ -28,7 +28,7 @@ export default ({ pageContext: { notes } }) => (
         </div>
       ))}
     </nav>
-    <GithubCorner href="https://github.com/domfyi/dom.fyi" />
+    <GithubCorner href="https://github.com/domfyi" />
   </main>
 )
 
