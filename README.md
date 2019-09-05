@@ -37,5 +37,5 @@ NETLIFY_BUILD_HOOK=url # endpoint for build script
 [ia writer]: https://ia.net/writer
 [first post]: https://dom.fyi/2019.216
 [first book review]: https://dom.fyi/2019.237
-[first code]: https://dom.fyi/2019.242
+[first mini app]: https://dom.fyi/2019.242
 [license]: https://dom.fyi/2019.246
