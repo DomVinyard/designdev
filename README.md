@@ -4,28 +4,38 @@
 
 Notes-app as a backend.
 
-🚀 [Here’s the plan]
-🚀 [Blog is live 🎉]
-🚀 [My deployment works like this]
+- 🚀 [Here’s the plan]
+- 🚀 [Blog is live 🎉]
+- 🚀 [My deployment works like this]
 
-### usage
+### Usage
 
 If you want to do the same thing, clone this repo and set the following environment variables.
 
 ```
-# .env
-DROPBOX_TOKEN: string # used by gatsby-config.js -> gatsby-source-dropbox
-DROPBOX_FOLDER: string # the name of the folder in dropbox. folder must be at the top level.
-
-NETLIFY_BUILD_HOOK: url # endpoint for build script
+DROPBOX_TOKEN=string # used by gatsby-config.js -> gatsby-source-dropbox
+DROPBOX_FOLDER=string # the name of the folder in dropbox. folder must be at the top level.
+NETLIFY_BUILD_HOOK=url # endpoint for build script
 ```
 
 - Must host with Netlify (edit gatsby-config to configure something else)
 - Must create a new [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
 - I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
 
+### Random Blog posts
+
+- 🚂 [first post]
+- 📚 [first book review]
+- 💻 [first mini app]
+- 📄 [license]
+
+
 [here’s the plan]: https://dom.fyi/2019.218
 [blog is live 🎉]: https://dom.fyi/2019.221
 [my deployment works like this]: https://dom.fyi/2019.224
 [dropbox webhook]: https://www.dropbox.com/developers/reference/webhooks
 [ia writer]: https://ia.net/writer
+[first post]: https://dom.fyi/2019.216
+[first book review]: https://dom.fyi/2019.237
+[first mini app]: https://dom.fyi/2019.242
+[license]: https://dom.fyi/2019.246

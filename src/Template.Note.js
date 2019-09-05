@@ -43,7 +43,7 @@ export default ({
         <meta property="og:url" content={`https://dom.fyi/${date}`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={`dom.fyi ${date}`} />
-        <meta property="og:description" content={excerpt} />
+        <meta property="og:description" content={excerpt.replace("🚀", "")} />
         <meta property="og:image" content="icon.png" />
       </Helmet>
       <header>
