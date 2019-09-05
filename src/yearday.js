@@ -10,16 +10,19 @@ import moment from "moment" // https://momentjs.com
 // string to date
 export default (arg, options = {}) => {
   if (typeof arg === "string") {
-    const valid =
-      /^\d{4}\.\d{1,3}\$/.test(arg) || /^\d{4}\.\d{1,3}\.\d{1,8}?$/.test(arg)
-    if (!valid) return moment.invalid()
-    const [year, day, time] = arg.split(".")
-    const paddedDay = day.padStart(3, "0")
-    const ISO8601 = [year, paddedDay].join("-")
-    const yeardayDate = moment(ISO8601)
-    if (time) yeardayDate.add(time, "milliseconds")
-    if (options.world) yeardayDate.add(10000, "years") // https://en.wikipedia.org/wiki/Holocene_calendar
-    return yeardayDate
+    try {
+      const valid = /^\d{4}\.\d{1,3}\.?\d{1,8}$/.test(arg)
+      if (!valid) throw "invalid"
+      const [year, day, time] = arg.split(".")
+      const paddedDay = day.padStart(3, "0")
+      const ISO8601 = [year, paddedDay].join("-")
+      const yeardayDate = moment(ISO8601)
+      if (time) yeardayDate.add(time, "milliseconds")
+      if (options.world) yeardayDate.add(10000, "years") // https://en.wikipedia.org/wiki/Holocene_calendar
+      return yeardayDate
+    } catch (error) {
+      return moment.invalid()
+    }
   }
 
   // TODO: date to string
