@@ -2,15 +2,17 @@
 
 # dom.fyi
 
-Notes-app as a backend.
+> I want my notes app to be the back-end for this content. I don’t want to do anything except write little notes. No upload process, no logging in to anywhere, no faffing. I want to write one note every day, tag it and have it automatically publish online.
 
-- 🚀 [Here’s the plan]
-- 🚀 [Blog is live 🎉]
-- 🚀 [My deployment works like this]
+1. Create a new note every day with the date as the title (in the [correct format])
+2. Write some stuff
+3. Add a rocket emoji (🚀) on the first line
+
+Write anywhere using any notes app that can sync with Dropbox (I use [iA Writer]). Dropbox keeps the devices (and the blog) in sync at all times as a single source of truth.
 
 ### Usage
 
-If you want your own auto-deploy notes-as-a-backend app this should be enough to get you started. Clone this repo and set the following environment variables.
+If you want to launch your own auto-deploy notes-as-a-backend app this should be enough to get you started pretty quickly. Clone this repo and set the following environment variables.
 
 ```
 NETLIFY_BUILD_HOOK=url # from Netlify
@@ -19,10 +21,8 @@ DROPBOX_FOLDER=string # The folder with your .md files
 ```
 
 1. Link repo to Netlify (edit gatsby-config to configure something else)
-2. Create a folder in Dropbox for your notes, get a Dropbox dev token for `DROPBOX_TOKEN`
-3. Create a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
-
-I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
+2. Create a folder in Dropbox for your notes and get a [Dropbox Developers] token
+3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
 
 ### Random Blog posts
 
@@ -31,9 +31,8 @@ I use [iA Writer] but you can write with any text editor that syncs with Dropbox
 - 💻 [first mini app]
 - 📄 [license]
 
-[here’s the plan]: https://dom.fyi/2019.218
-[blog is live 🎉]: https://dom.fyi/2019.221
-[my deployment works like this]: https://dom.fyi/2019.224
+[correct format]: https://dom.fyi/2019.220
+[dropbox developers]: https://www.dropbox.com/developers/documentation/http/overview
 [dropbox webhook]: https://www.dropbox.com/developers/reference/webhooks
 [ia writer]: https://ia.net/writer
 [first post]: https://dom.fyi/2019.216
