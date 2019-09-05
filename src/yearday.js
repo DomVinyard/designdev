@@ -18,7 +18,7 @@ export default (arg, options = {}) => {
     const yeardayDate = moment(ISO8601)
     if (time) yeardayDate.add(time, "milliseconds")
     if (options.world) yeardayDate.add(10000, "years") // https://en.wikipedia.org/wiki/Holocene_calendar
-    return yeardayDate(ISO8601)
+    return yeardayDate
   }
 
   // TODO: date to string
