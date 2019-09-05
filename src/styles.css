@@ -82,6 +82,9 @@ nav label {
 nav span p a {
   color: #bbb !important;
 }
+.start {
+  margin-left: 34px;
+}
 /* Text scaling on narrow displays */
 @media only screen and (max-width: 900px) {
   article,
@@ -101,6 +104,9 @@ nav span p a {
     height: 32px;
     margin-top: 0.3rem;
   }
+  .start {
+    margin-left: 30px;
+  }
 }
 @media only screen and (max-width: 600px) {
   article,
@@ -119,5 +125,8 @@ nav span p a {
   nav div {
     height: 26px;
     margin-top: 0.2rem;
+  }
+  .start {
+    margin-left: 23px;
   }
 }
