@@ -24,7 +24,9 @@ export default ({ pageContext: { notes } }) => (
               {i === 0 ? <span className="start">start</span> : date}
               {i === notes.length - 1 && "⟶ "}
             </label>
-            <span>{content.excerpt.replace("🚀", "").split(mark)[0]}</span>
+            <span style={{ marginLeft: 4 }}>
+              {content.excerpt.replace("🚀", "").split(mark)[0]}
+            </span>
           </Link>
         </div>
       ))}
