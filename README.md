@@ -22,8 +22,20 @@ NETLIFY_BUILD_HOOK=url # endpoint for build script
 - Must create a new [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
 - I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
 
+### Random Blog posts
+
+- 🚂 [first post] https://dom.fyi/2019.216
+- 📚 [first book review] https://dom.fyi/2019.237
+- 💻 [first code] https://dom.fyi/2019.242
+- 📄 [license] https://dom.fyi/2019.246
+
+
 [here’s the plan]: https://dom.fyi/2019.218
 [blog is live 🎉]: https://dom.fyi/2019.221
 [my deployment works like this]: https://dom.fyi/2019.224
 [dropbox webhook]: https://www.dropbox.com/developers/reference/webhooks
 [ia writer]: https://ia.net/writer
+[first post]: https://dom.fyi/2019.216
+[first book review]: https://dom.fyi/2019.237
+[first code]: https://dom.fyi/2019.242
+[license]: https://dom.fyi/2019.246
