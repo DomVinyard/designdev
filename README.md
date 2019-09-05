@@ -8,11 +8,11 @@
 2. Write some stuff
 3. Add a rocket emoji (🚀) on the first line
 
-Write anywhere using any notes app that can sync with Dropbox (I use [iA Writer]). Dropbox keeps the devices (and the blog) in sync at all times as a single source of truth.
+Use any notes app that can sync with Dropbox. (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
 
 ### Usage
 
-If you want to launch your own auto-deploy notes-as-a-backend app this should be enough to get you started pretty quickly. Clone this repo and set the following environment variables.
+If you want to launch your own auto-deploy notes-as-a-backend blog this should be enough to get you started. Clone this repo and set the following environment variables.
 
 ```
 NETLIFY_BUILD_HOOK=url # from Netlify
@@ -20,11 +20,11 @@ DROPBOX_TOKEN=string # from Dropbox
 DROPBOX_FOLDER=string # The folder with your .md files
 ```
 
-1. Link repo to Netlify (edit gatsby-config to configure something else)
-2. Create a folder in Dropbox for your notes and get a [Dropbox Developers] token
+1. Link your repo to a Netlify Site
+2. Get a [Dropbox Developers] token and create a folder in Dropbox for your notes
 3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
 
-### Random Blog posts
+### Random blog posts
 
 - 🚂 [first post]
 - 📚 [first book review]
