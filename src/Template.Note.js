@@ -50,7 +50,7 @@ export default ({
         <Link to="/list" children={first ? "‹ view all" : "‹ start"} />
         <h1>
           {`🚀`}
-          {first ? "start" : date}
+          {date}
         </h1>
       </header>
       {html && (

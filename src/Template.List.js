@@ -14,7 +14,8 @@ export default ({ pageContext: { notes } }) => (
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    <h1>{`🚀`}dom.fyi</h1>
+    <GithubCorner href="https://github.com/domfyi" />
+    <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content }, i) => (
         <div>
@@ -28,7 +29,18 @@ export default ({ pageContext: { notes } }) => (
         </div>
       ))}
     </nav>
-    <GithubCorner href="https://github.com/domfyi" />
+    <div
+      style={{
+        textAlign: "center",
+        fontSize: "2.5rem",
+        paddingTop: "4rem",
+        filter: "grayscale(100%)",
+        opacity: 0.5,
+        pointerEvents: "none",
+      }}
+    >
+      🚀
+    </div>
   </main>
 )
 
