@@ -10,7 +10,7 @@ Notes-app as a backend.
 
 ### Usage
 
-If you want to do the same thing, clone this repo and set the following environment variables.
+If you want your own auto-deploy notes-as-a-backend app this should be enough to get you started. Clone this repo and set the following environment variables.
 
 ```
 DROPBOX_TOKEN=string # used by gatsby-config.js -> gatsby-source-dropbox
@@ -18,9 +18,11 @@ DROPBOX_FOLDER=string # the name of the folder in dropbox. folder must be at the
 NETLIFY_BUILD_HOOK=url # endpoint for build script
 ```
 
-- Must host with Netlify (edit gatsby-config to configure something else)
-- Must create a new [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
-- I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
+1. Link repo to Netlify (edit gatsby-config to configure something else)
+2. Create a folder in Dropbox for your notes, get a Dropbox dev token for `DROPBOX_TOKEN`
+3. Create a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
+
+I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
 
 ### Random Blog posts
 
@@ -28,7 +30,6 @@ NETLIFY_BUILD_HOOK=url # endpoint for build script
 - 📚 [first book review]
 - 💻 [first mini app]
 - 📄 [license]
-
 
 [here’s the plan]: https://dom.fyi/2019.218
 [blog is live 🎉]: https://dom.fyi/2019.221
