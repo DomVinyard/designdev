@@ -12,7 +12,7 @@ Use any notes app that can sync with Dropbox. (I use [iA Writer]). Write anywher
 
 ### Usage
 
-If you want to launch your own auto-deploy notes-as-a-backend blog this should be enough to get you started. Clone this repo and set the following environment variables.
+If you want to launch your own auto-deploy notes-as-a-backend blog this should be a good starting point. Clone this repo and set the following environment variables.
 
 ```
 NETLIFY_BUILD_HOOK=url # from Netlify
