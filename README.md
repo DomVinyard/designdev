@@ -24,10 +24,10 @@ NETLIFY_BUILD_HOOK=url # endpoint for build script
 
 ### Random Blog posts
 
-- 🚂 [first post] https://dom.fyi/2019.216
-- 📚 [first book review] https://dom.fyi/2019.237
-- 💻 [first code] https://dom.fyi/2019.242
-- 📄 [license] https://dom.fyi/2019.246
+- 🚂 [first post]
+- 📚 [first book review]
+- 💻 [first mini app]
+- 📄 [license]
 
 
 [here’s the plan]: https://dom.fyi/2019.218
