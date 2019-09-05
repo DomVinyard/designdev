@@ -6,6 +6,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
+import GithubCorner from "react-github-corner"
 export default ({ pageContext: { notes } }) => (
   <main>
     <Helmet>
@@ -27,6 +28,7 @@ export default ({ pageContext: { notes } }) => (
         </div>
       ))}
     </nav>
+    <GithubCorner href="https://github.com/domfyi" />
   </main>
 )
 
