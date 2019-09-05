@@ -2,7 +2,7 @@
 
 # dom.fyi
 
-> I want my notes app to be the back-end for this content. I don’t want to do anything except write little notes. No upload process, no logging in to anywhere, no faffing. I want to write one note every day, tag it and have it automatically publish online.
+> I want my notes app to be the back-end for this content. I don’t want to do anything except write little notes. No upload process, no logging in to anywhere, no faffing.
 
 1. Create a new note every day with the date as the title (in the [correct format])
 2. Write some stuff
