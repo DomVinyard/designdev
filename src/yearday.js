@@ -10,7 +10,8 @@ import moment from "moment" // https://momentjs.com
 // string to date
 export default (arg, options = {}) => {
   if (typeof arg === "string") {
-    const valid = /^\d{4,5}\.\d{1,3}\.\d{1,8}?$/.test(arg)
+    const valid =
+      /^\d{4}\.\d{1,3}\$/.test(arg) || /^\d{4}\.\d{1,3}\.\d{1,8}?$/.test(arg)
     if (!valid) return moment.invalid()
     const [year, day, time] = arg.split(".")
     const paddedDay = day.padStart(3, "0")
