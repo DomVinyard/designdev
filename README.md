@@ -13,13 +13,14 @@ Notes-app as a backend.
 If you want to do the same thing, clone this repo and set the following environment variables.
 
 ```
-DROPBOX_TOKEN=string # used by gatsby-config.js -> gatsby-source-dropbox
-DROPBOX_FOLDER=string # the name of the folder in dropbox. folder must be at the top level.
-NETLIFY_BUILD_HOOK=url # endpoint for build script
+NETLIFY_BUILD_HOOK=url # from Netlify
+DROPBOX_TOKEN=string # from Dropbox
+DROPBOX_FOLDER=string # The folder with your .md files
 ```
 
 - Must host with Netlify (edit gatsby-config to configure something else)
 - Must create a new [Dropbox Webhook] to point at your NETLIFY_BUILD_HOOK endpoint
+- Your notes folder must be at the top-level, inside the Dropbox root.
 - I use [iA Writer] but you can write with any text editor that syncs with Dropbox.
 
 ### Random Blog posts
