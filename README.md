@@ -6,7 +6,7 @@
 
 1. Create a new note every day with the date as the title (in the [correct format])
 2. Write some stuff
-3. Add a rocket emoji (🚀) on the first line
+3. Add a rocket emoji (🚀) on the first line (the build script ignores everything without a rocket) 
 
 Use any notes app that can sync with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
 
