@@ -7,6 +7,8 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
 import GithubCorner from "react-github-corner"
+const github = "https://github.com/domfyi/dom.fyi/blob/dom.fyi/README.md"
+
 export default ({ pageContext: { notes } }) => (
   <main>
     <Helmet>
@@ -14,7 +16,7 @@ export default ({ pageContext: { notes } }) => (
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    <GithubCorner href="https://github.com/domfyi" />
+    <GithubCorner href={github} />
     <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content }, i) => (
