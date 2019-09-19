@@ -2,13 +2,15 @@
 
 # dom.fyi
 
-> I want my notes app to be the back-end for this content. I don’t want to do anything except write little notes. No upload process, no logging in to anywhere, no faffing.
+> I want my normal iPhone notes app to be the back-end for this content. I don’t want to do anything except write little notes. No database, no upload process, no logging in to anywhere, no faffing.
+
+I want to:
 
 1. Create a new note every day with the date as the title (in the [correct format])
 2. Write some stuff
-3. Add a rocket emoji (🚀) on the first line (the build script ignores everything without a rocket) 
+3. Add a rocket emoji (🚀) on the first line (the build script will ignore everything without a rocket) 
 
-Use any notes app that can sync with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
+Use any notes app that can sync with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
 
 ![image][image]
 
