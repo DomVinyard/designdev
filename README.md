@@ -22,7 +22,7 @@ DROPBOX_TOKEN=string # from Dropbox
 DROPBOX_FOLDER=string # The folder with your .md files
 ```
 
-1. Link your repo to a Netlify Site
+1. Link the cloned repo to a Netlify Site and swap the 'dom.fyi' title for your title 
 2. Get a [Dropbox Developers] token and create a folder in Dropbox for your notes
 3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
 
