@@ -10,6 +10,8 @@
 
 Use any notes app that can sync with Dropbox. (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
 
+![image][image]
+
 ### Usage
 
 If you want to launch your own auto-deploy notes-as-a-backend blog this should be a good starting point. Clone this repo and set the following environment variables.
@@ -39,3 +41,5 @@ DROPBOX_FOLDER=string # The folder with your .md files
 [first book review]: https://dom.fyi/2019.237
 [first mini app]: https://dom.fyi/2019.242
 [license]: https://dom.fyi/2019.246
+
+[image]: https://i.imgur.com/wZNU5lm_d.jpg
