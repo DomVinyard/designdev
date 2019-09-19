@@ -8,7 +8,7 @@
 2. Write some stuff
 3. Add a rocket emoji (🚀) on the first line
 
-Use any notes app that can sync with Dropbox. (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
+Use any notes app that can sync with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth.
 
 ![image][image]
 
