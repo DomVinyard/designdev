@@ -42,4 +42,4 @@ DROPBOX_FOLDER=string # The folder with your .md files
 [first mini app]: https://dom.fyi/2019.242
 [license]: https://dom.fyi/2019.246
 
-[image]: https://i.imgur.com/wZNU5lm_d.jpg?maxwidth=640&shape=thumb&fidelity=medium
+[image]: https://i.imgur.com/wZNU5lm_d.jpg?maxwidth=1280&shape=thumb&fidelity=medium
