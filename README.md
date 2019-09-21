@@ -4,20 +4,21 @@
 
 Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Writer]). 
 
-1. Create a new note every day with the date as the title (in the [correct format])
+1. Create a new note every day with the [date] as the title
 2. Write some stuff
-3. Add a rocket emoji (🚀) on the first line (the build script ignores everything without a rocket) 
+3. Add a rocket emoji (🚀) on the first line (it means 'published').
 
-Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
+The build script ignores everything without a rocket. Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
 
 ![image][image]
 
-### Sample blog posts
+### Sample notes
 
-- 🚂 [first post]
-- 📄 [list of all posts]
-- 💻 [first mini app]
-- 📄 [license]
+- 🚀 [first note]
+- 🃏 [blackjack]
+- 👮‍ [license]
+
+- 📄 [list of notes]
 
 ### Usage
 
@@ -25,22 +26,22 @@ If you want to launch your own auto-deploy notes-as-a-backend blog (and can writ
 
 ```
 NETLIFY_BUILD_HOOK=url # from Netlify
-DROPBOX_TOKEN=string # from Dropbox
-DROPBOX_FOLDER=string # The folder with your .md files
+DROPBOX_TOKEN=string   # from Dropbox
+DROPBOX_FOLDER=string  # Folder Name containing .md notes
 ```
 
 1. Link your cloned repo to an empty Netlify Site and swap the 'dom.fyi' title for your title 
 2. Get a [Dropbox Developers] token and create a folder in Dropbox for your notes
 3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
 
-[correct format]: https://dom.fyi/2019.220
+[date]: https://dom.fyi/2019.220
 [dropbox developers]: https://www.dropbox.com/developers/documentation/http/overview
 [dropbox webhook]: https://www.dropbox.com/developers/reference/webhooks
 [markdown]: https://daringfireball.net/projects/markdown/
 [ia writer]: https://ia.net/writer
-[first post]: https://dom.fyi/2019.216
-[list of all posts]: https://dom.fyi/list
-[first mini app]: https://dom.fyi/2019.242
+[first note]: https://dom.fyi/2019.216
+[list of notes]: https://dom.fyi/list
+[blackjack]: https://dom.fyi/2019.242
 [license]: https://dom.fyi/2019.246
 
 [image]: https://i.imgur.com/wZNU5lm_d.jpg?maxwidth=1280&shape=thumb&fidelity=medium
