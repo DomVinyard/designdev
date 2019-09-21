@@ -15,7 +15,7 @@ Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all tim
 ### Sample blog posts
 
 - 🚂 [first post]
-- 📚 [first book review]
+- 📄 [list of all posts]
 - 💻 [first mini app]
 - 📄 [license]
 
@@ -39,7 +39,7 @@ DROPBOX_FOLDER=string # The folder with your .md files
 [markdown]: https://daringfireball.net/projects/markdown/
 [ia writer]: https://ia.net/writer
 [first post]: https://dom.fyi/2019.216
-[first book review]: https://dom.fyi/2019.237
+[list of all posts]: https://dom.fyi/list
 [first mini app]: https://dom.fyi/2019.242
 [license]: https://dom.fyi/2019.246
 
