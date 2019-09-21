@@ -10,7 +10,7 @@ I want to:
 2. Write some stuff
 3. Add a rocket emoji (🚀) on the first line (the build script will ignore everything without a rocket) 
 
-Use any notes app that can sync with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
+Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Writer]). Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
 
 ![image][image]
 
@@ -38,6 +38,7 @@ DROPBOX_FOLDER=string # The folder with your .md files
 [correct format]: https://dom.fyi/2019.220
 [dropbox developers]: https://www.dropbox.com/developers/documentation/http/overview
 [dropbox webhook]: https://www.dropbox.com/developers/reference/webhooks
+[markdown]: https://daringfireball.net/projects/markdown/
 [ia writer]: https://ia.net/writer
 [first post]: https://dom.fyi/2019.216
 [first book review]: https://dom.fyi/2019.237
