@@ -14,9 +14,9 @@ const breakLength = 10 // If no post for this many days, consider it a new conte
 const Rocket = () => <div
 style={{
   textAlign: "center",
-  fontSize: "2.5rem",
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
+  fontSize: "2.2rem",
+  paddingTop: '2.4rem',
+  paddingBottom: '2.2rem',
   filter: "grayscale(100%)",
   opacity: 0.5,
   pointerEvents: "none",
@@ -36,7 +36,7 @@ export default ({ pageContext: { notes } }) => (
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
     />
-    <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
+    <h1 style={{ marginTop: "67px", marginBottom: '2.5rem' }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment>
