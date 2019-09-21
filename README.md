@@ -12,6 +12,13 @@ Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all tim
 
 ![image][image]
 
+### Sample blog posts
+
+- 🚂 [first post]
+- 📚 [first book review]
+- 💻 [first mini app]
+- 📄 [license]
+
 ### Usage
 
 If you want to launch your own auto-deploy notes-as-a-backend blog (and can write a bit of javascript) this should be a good starting point. Clone this repo and set the following environment variables.
@@ -22,16 +29,9 @@ DROPBOX_TOKEN=string # from Dropbox
 DROPBOX_FOLDER=string # The folder with your .md files
 ```
 
-1. Link the cloned repo to a Netlify Site and swap the 'dom.fyi' title for your title 
+1. Link your cloned repo to an empty Netlify Site and swap the 'dom.fyi' title for your title 
 2. Get a [Dropbox Developers] token and create a folder in Dropbox for your notes
 3. Configure a [Dropbox Webhook] to point at your `NETLIFY_BUILD_HOOK` endpoint
-
-### Sample blog posts
-
-- 🚂 [first post]
-- 📚 [first book review]
-- 💻 [first mini app]
-- 📄 [license]
 
 [correct format]: https://dom.fyi/2019.220
 [dropbox developers]: https://www.dropbox.com/developers/documentation/http/overview
