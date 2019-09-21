@@ -6,9 +6,9 @@ Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Wri
 
 1. Create a new note every day with the [date] as the title
 2. Write some stuff
-3. Add a rocket emoji (🚀) on the first line (it means 'published').
+3. Add a rocket emoji (🚀) on the first line to mark 'published'.
 
-The build script ignores everything without a rocket. Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
+That's it. The build script ignores everything without a rocket. Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
 
 ![image][image]
 
