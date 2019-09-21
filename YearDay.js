@@ -5,10 +5,10 @@
   Returns a YearDate object, which is actually just a momentjs object
 */
 
-import moment from "moment" // https://momentjs.com
+const moment = require("moment") // https://momentjs.com
 
 // string to date
-export default (arg, options = {}) => {
+const StringToDate = (arg, options = {}) => {
   if (typeof arg === "string") {
     try {
       const valid = /^\d{4}\.\d{1,3}\.?\d{1,8}$/.test(arg)
@@ -35,3 +35,5 @@ export default (arg, options = {}) => {
     return momentObject
   }
 }
+
+module.exports = StringToDate

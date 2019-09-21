@@ -9,6 +9,8 @@ import { Link } from "gatsby"
 import GithubCorner from "react-github-corner"
 const github = "https://github.com/domfyi/dom.fyi/blob/dom.fyi/README.md"
 
+const breakLength = 10 // If no post for this many days, consider it a new content group
+
 export default ({ pageContext: { notes } }) => (
   <main>
     <Helmet>
@@ -16,11 +18,14 @@ export default ({ pageContext: { notes } }) => (
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    <GithubCorner href={github} />
+    <GithubCorner
+      href={github}
+      style={{ position: "fixed", right: 0, top: 0 }}
+    />
     <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
     <nav>
-      {notes.map(({ date, content }, i) => (
-        <div>
+      {notes.map(({ date, content, gapAfter }, i) => (
+        <div style={{ marginBottom: gapAfter > breakLength ? "5rem" : "auto" }}>
           <Link to={`/${date}`}>
             <label style={{ fontWeight: i === 0 ? "bold" : "normal" }}>
               {i === 0 ? <span className="start">start</span> : date}

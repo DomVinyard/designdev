@@ -5,6 +5,7 @@
 */
 
 const { resolve } = require("path")
+const YearDay = require("./YearDay")
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query GetNotes {
@@ -35,10 +36,13 @@ exports.createPages = async ({ graphql, actions }) => {
   notes.forEach((note, i) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const first = i > 0 ? "" : `/${notes[0].date}`
+    const gapAfter =
+      next && YearDay(next.slice(1)).diff(YearDay(note.date), "days")
+    note.gapAfter = gapAfter
     actions.createPage({
       path: note.date,
       component: resolve(`./src/Template.Note.js`),
-      context: { date: note.date, next, first },
+      context: { date: note.date, next, first, gapAfter },
     })
   })
   await actions.createPage({
