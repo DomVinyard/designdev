@@ -7,9 +7,23 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
 import GithubCorner from "react-github-corner"
-const github = "https://github.com/domfyi/dom.fyi/blob/dom.fyi/README.md"
+const github = "https://github.com/domfyi"
 
 const breakLength = 10 // If no post for this many days, consider it a new content group
+
+const Rocket = () => <div
+style={{
+  textAlign: "center",
+  fontSize: "2.5rem",
+  paddingTop: '2rem',
+  paddingBottom: '2rem',
+  filter: "grayscale(100%)",
+  opacity: 0.5,
+  pointerEvents: "none",
+}}
+>
+🚀
+</div>
 
 export default ({ pageContext: { notes } }) => (
   <main>
@@ -25,30 +39,21 @@ export default ({ pageContext: { notes } }) => (
     <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
-        <div style={{ marginBottom: gapAfter > breakLength ? "5rem" : "auto" }}>
-          <Link to={`/${date}`}>
-            <label style={{ fontWeight: i === 0 ? "bold" : "normal" }}>
-              {i === 0 ? <span className="start">start</span> : date}
-              {i === notes.length - 1 && "⟶ "}
-            </label>
-            <span style={{ marginLeft: 4 }}>
-              {content.excerpt.replace("🚀", "").split(mark)[0]}
-            </span>
-          </Link>
-        </div>
+        <React.Fragment>
+          <div style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}>
+            <Link to={`/${date}`}>
+              <label>{date}</label>
+              <span style={{ marginLeft: 4 }}>
+                {content.excerpt.replace("🚀", "").split(mark)[0]}
+              </span>
+            </Link>
+          </div>
+          {gapAfter > breakLength && <Rocket/>}
+        </React.Fragment>
       ))}
     </nav>
-    <div
-      style={{
-        textAlign: "center",
-        fontSize: "2.5rem",
-        paddingTop: "4rem",
-        filter: "grayscale(100%)",
-        opacity: 0.5,
-        pointerEvents: "none",
-      }}
-    >
-      🚀
+    <div>
+      <Rocket/>
     </div>
   </main>
 )

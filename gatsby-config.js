@@ -6,8 +6,12 @@
 */
 
 require("dotenv").config()
+const logji = require('logji')
 const { DROPBOX_TOKEN, DROPBOX_FOLDER } = process.env
-if (!DROPBOX_TOKEN || !DROPBOX_TOKEN) throw "where is dropbox?"
+if (!DROPBOX_TOKEN || !DROPBOX_TOKEN) {
+  logji.middle_finger('Where is dropbox?')
+  process.exit(1);
+}
 const Dropbox = {
   accessToken: DROPBOX_TOKEN,
   extensions: [".md"],

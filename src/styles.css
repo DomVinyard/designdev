@@ -19,7 +19,7 @@ main {
 article,
 nav {
   font-size: 1.5rem;
-  line-height: 2.5rem;
+  line-height: 2.25rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
@@ -82,15 +82,12 @@ nav label {
 nav span p a {
   color: #bbb !important;
 }
-.start {
-  margin-left: 34px;
-}
 /* Text scaling on narrow displays */
 @media only screen and (max-width: 900px) {
   article,
   nav {
     font-size: 1.35rem;
-    line-height: 2.25rem;
+    line-height: 2.15rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
@@ -112,7 +109,7 @@ nav span p a {
   article,
   nav {
     font-size: 1.05rem;
-    line-height: 1.8rem;
+    line-height: 1.7rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
