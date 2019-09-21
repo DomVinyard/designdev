@@ -12,7 +12,7 @@ That's it. The build script ignores everything without a rocket. Write anywhere,
 
 ![image][image]
 
-### Sample notes
+### Demo
 
 - 🚀 [first note]
 - 🃏 [blackjack]
