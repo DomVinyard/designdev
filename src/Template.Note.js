@@ -5,8 +5,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-import GithubCorner from "react-github-corner"
-const github = "https://github.com/domfyi/dom.fyi/blob/dom.fyi/README.md"
 
 export const query = graphql`
   query($date: String) {
@@ -46,10 +44,6 @@ export default ({
         <meta property="og:description" content={excerpt.replace("🚀", "")} />
         <meta property="og:image" content="src/icon.png" />
       </Helmet>
-      <GithubCorner
-        href={github}
-        style={{ position: "fixed", right: 0, top: 0 }}
-      />
       <header>
         <Link to="/list" children={first ? "‹ view all" : "‹ start"} />
         <h1>

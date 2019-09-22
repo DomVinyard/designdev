@@ -11,9 +11,7 @@ const github = "https://github.com/domfyi"
 
 const breakLength = 10 // If no post for this many days, consider it a new content group
 
-const Rocket = () => <div className="list_divider">
-🚀
-</div>
+const Rocket = () => <div className="list_divider">🚀</div>
 
 export default ({ pageContext: { notes } }) => (
   <main>
@@ -26,11 +24,13 @@ export default ({ pageContext: { notes } }) => (
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
     />
-    <h1 style={{ marginTop: "67px", marginBottom: '2.5rem' }}>{`🚀`}dom.fyi</h1>
+    <h1 style={{ marginTop: "67px", marginBottom: "2.5rem" }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment>
-          <div style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}>
+          <div
+            style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
+          >
             <Link to={`/${date}`}>
               <label>{date}</label>
               <span style={{ marginLeft: 4 }}>
@@ -38,12 +38,12 @@ export default ({ pageContext: { notes } }) => (
               </span>
             </Link>
           </div>
-          {gapAfter > breakLength && <Rocket/>}
+          {gapAfter > breakLength && <Rocket />}
         </React.Fragment>
       ))}
     </nav>
     <div>
-      <Rocket/>
+      <Rocket />
     </div>
   </main>
 )
