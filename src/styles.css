@@ -19,9 +19,14 @@ main {
 article,
 nav {
   font-size: 1.5rem;
-  line-height: 2.25rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+article {
+  line-height: 2.5rem;
+}
+nav {
+  line-height: 2.25rem;
 }
 h1 {
   margin-bottom: 3.5rem;
@@ -95,9 +100,15 @@ nav span p a {
   article,
   nav {
     font-size: 1.35rem;
-    line-height: 2.15rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
+  }
+
+  article {
+    line-height: 2.25rem;
+  }
+  nav {
+    line-height: 2.15rem;
   }
   h1 {
     margin-bottom: 2.75rem;
@@ -125,9 +136,15 @@ nav span p a {
   article,
   nav {
     font-size: 1.05rem;
-    line-height: 1.7rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
+  }
+
+  article {
+    line-height: 1.8rem;
+  }
+  nav {
+    line-height: 1.7rem;
   }
   h1 {
     margin-bottom: 2rem;
