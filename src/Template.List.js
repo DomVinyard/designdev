@@ -35,7 +35,10 @@ export default ({ pageContext: { notes } }) => (
             style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
           >
             <Link to={`/${date}`}>
-              <label>{date}</label>
+              <label>
+                <span style={{ fontSize: "0.85em" }}>{date.split(".")[0]}</span>
+                .{date.split(".")[1]}
+              </label>
               <span style={{ marginLeft: 4 }}>
                 {content.excerpt.replace("🚀", "").split(mark)[0]}
               </span>
