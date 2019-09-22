@@ -24,7 +24,7 @@ export default ({ pageContext: { notes } }) => (
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
     />
-    <h1 style={{ marginTop: "67px", marginBottom: "2.5rem" }}>{`🚀`}dom.fyi</h1>
+    <h1 style={{ marginTop: "67px" }}>{`🚀`}dom.fyi</h1>
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment>
