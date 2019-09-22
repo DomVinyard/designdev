@@ -45,7 +45,7 @@ export default ({
         <meta property="og:image" content="src/icon.png" />
       </Helmet>
       <header>
-        <Link to="/list" children={first ? "‹ view all" : "‹ start"} />
+        <Link to="/list" children={"‹ all notes"} />
         <h1>
           {`🚀`}
           {date}
