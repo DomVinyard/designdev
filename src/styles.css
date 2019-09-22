@@ -28,13 +28,18 @@ article {
 nav {
   line-height: 2.25rem;
 }
-h1 {
+header {
   margin-bottom: 3.5rem;
-  margin-top: 2.5rem;
+}
+h1 {
+  margin-top: 4rem;
   font-size: 2rem;
+  margin-bottom: 0.1rem;
+  cursor: default;
 }
 footer h2 a {
   font-size: 1.5rem;
+  color: rgb(204, 11, 28) !important;
 }
 nav div {
   height: 36px;
@@ -43,7 +48,7 @@ nav div {
 }
 
 header a {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 footer {
@@ -114,8 +119,11 @@ nav span p a {
   nav {
     line-height: 2.15rem;
   }
-  h1 {
+  header {
     margin-bottom: 2.75rem;
+  }
+  header a {
+    font-size: 1.2rem;
   }
   h1,
   .list_divider {
@@ -150,12 +158,15 @@ nav span p a {
   nav {
     line-height: 1.7rem;
   }
-  h1 {
+  header {
     margin-bottom: 2rem;
+  }
+  header a {
+    font-size: 1rem;
   }
   h1,
   .list_divider {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
   .list_divider {
     padding-top: 1rem;

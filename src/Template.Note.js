@@ -45,11 +45,11 @@ export default ({
         <meta property="og:image" content="src/icon.png" />
       </Helmet>
       <header>
-        <Link to="/list" children={"‹ all notes"} />
         <h1>
           {`🚀`}
           {date}
         </h1>
+        <Link to="/list" children={"‹ all notes"} />
       </header>
       {html && (
         <article
