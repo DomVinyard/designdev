@@ -11,17 +11,7 @@ const github = "https://github.com/domfyi"
 
 const breakLength = 10 // If no post for this many days, consider it a new content group
 
-const Rocket = () => <div
-style={{
-  textAlign: "center",
-  fontSize: "2.2rem",
-  paddingTop: '2.4rem',
-  paddingBottom: '2.2rem',
-  filter: "grayscale(100%)",
-  opacity: 0.5,
-  pointerEvents: "none",
-}}
->
+const Rocket = () => <div className="list_divider">
 🚀
 </div>
 

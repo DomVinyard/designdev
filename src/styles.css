@@ -82,6 +82,15 @@ nav label {
 nav span p a {
   color: #bbb !important;
 }
+.list_divider {
+  text-align: center;
+  font-size: 2.2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
 /* Text scaling on narrow displays */
 @media only screen and (max-width: 900px) {
   article,
@@ -91,8 +100,12 @@ nav span p a {
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
-  h1 {
+  h1, .list_divider {
     font-size: 1.8rem;
+  }
+  .list_divider {
+    padding-top: 1.8rem;
+    padding-bottom: 2.6rem;
   }
   footer h2 a {
     font-size: 1.3rem;
@@ -113,8 +126,12 @@ nav span p a {
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
-  h1 {
+  h1, .list_divider {
     font-size: 1.6rem;
+  }
+  .list_divider {
+    padding-top: 1rem;
+    padding-bottom: 2.4rem;
   }
   footer h2 a {
     font-size: 1.1rem;
