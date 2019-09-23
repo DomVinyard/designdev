@@ -49,7 +49,7 @@ export default ({
           {`🚀`}
           {date}
         </h1>
-        <Link to="/list" children={"‹ all notes"} />
+        <Link to="/list" children={"‹ view all"} />
       </header>
       {html && (
         <article
