@@ -15,10 +15,9 @@ That's it. The build script 👉 [![Netlify Status](https://api.netlify.com/api/
 ### Demo
 
 - 🚀 [first note]
+- 📄 [list of notes]
 - 🃏 [blackjack]
 - 👮‍ [license]
-
-- 📄 [list of notes]
 
 ### Usage
 
