@@ -4,13 +4,13 @@
 
 Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Writer]). 
 
+![image][image]
+
 1. Create a new note every day with the [date] as the title
 2. Write some stuff
 3. Add a rocket emoji (🚀) on the first line to mark 'published'.
 
 That's it. The build script 👉 [![Netlify Status](https://api.netlify.com/api/v1/badges/8f857d1f-c68f-424f-a4d2-b473fc4ccddb/deploy-status)](https://app.netlify.com/sites/domfyi/deploys) 👈 ignores everything without a rocket. Write anywhere, Dropbox keeps all your devices (and the blog) in sync at all times as a single source of truth. Like this:
-
-![image][image]
 
 ### Demo
 
