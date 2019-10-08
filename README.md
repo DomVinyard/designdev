@@ -2,9 +2,9 @@
 
 # dom.fyi
 
-Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Writer]). 
-
 ![image][image]
+
+Use any notes app that supports [markdown] and syncs with Dropbox (I use [iA Writer]). 
 
 1. Create a new note every day with the [date] as the title
 2. Write some stuff
