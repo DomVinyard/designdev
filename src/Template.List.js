@@ -7,7 +7,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
 import GithubCorner from "react-github-corner"
-const github = "https://github.com/domfyi"
+const github = "https://github.com/domfyi/dom.fyi"
 
 const breakLength = 10 // If no post for this many days, consider it a new content group
 
