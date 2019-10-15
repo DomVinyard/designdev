@@ -47,7 +47,7 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {date}
+          {date.split(".")[1] > 219 ? date : ""}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
