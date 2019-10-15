@@ -32,6 +32,7 @@ export default ({
   pageContext: { next, first, gapAfter },
 }) => {
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
+  const [year, day] = date.split(".")
   return (
     <main>
       <Helmet>
@@ -47,7 +48,9 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {date.split(".")[1] > 219 ? date : ""}
+          {year == 2019 && day < 220
+            ? ""
+            : date /* otherwise yearday wasn't invented yet */}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
