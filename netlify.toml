@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "https://yearday.org"
+  from = "https://yearday.org/*"
   to = "https://dom.fyi/2019.220"
   status = 200
   force = true
