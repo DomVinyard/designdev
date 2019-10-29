@@ -6,11 +6,11 @@
 */
 
 require("dotenv").config()
-const logji = require('logji')
+const logji = require("logji")
 const { DROPBOX_TOKEN, DROPBOX_FOLDER } = process.env
 if (!DROPBOX_TOKEN || !DROPBOX_TOKEN) {
-  logji.middle_finger('Where is dropbox?')
-  process.exit(1);
+  logji.middle_finger("Where is dropbox?")
+  process.exit(1)
 }
 const Dropbox = {
   accessToken: DROPBOX_TOKEN,
@@ -37,7 +37,10 @@ module.exports = {
     `gatsby-plugin-offline`, // works offline
     `gatsby-transformer-remark`, // converts markdown to html
     `gatsby-plugin-react-helmet`, // add page headers
-    `gatsby-plugin-netlify`, // add Netlify security headers
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: { generateMatchPathRewrites: true },
+    }, // add Netlify security headers
     { resolve: `gatsby-plugin-manifest`, options: Manifest }, // metadata
   ],
 }

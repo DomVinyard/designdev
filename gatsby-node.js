@@ -51,10 +51,20 @@ exports.createPages = async ({ graphql, actions }) => {
     context: { notes },
   })
 
-  // return await actions.createRedirect({
-  //   fromPath: "/",
-  //   toPath: `/${notes[notes.length - 1].date}`,
-  //   redirectInBrowser: true,
-  //   statusCode: 200,
-  // })
+  await actions.createRedirect({
+    fromPath: "https://domfyi.netlify.com/*",
+    toPath: "https://dom.fyi/:splat",
+    isPermanent: true,
+  })
+  await actions.createRedirect({
+    fromPath: "https://yearday.org",
+    toPath: "https://dom.fyi/2019.220",
+    isPermanent: true,
+  })
+  return await actions.createRedirect({
+    fromPath: "/",
+    toPath: `/${notes[notes.length - 1].date}`,
+    redirectInBrowser: true,
+    statusCode: 200,
+  })
 }
