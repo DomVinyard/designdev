@@ -50,10 +50,11 @@ exports.createPages = async ({ graphql, actions }) => {
     component: resolve(`./src/Template.List.js`),
     context: { notes },
   })
-  return await actions.createRedirect({
-    fromPath: "/",
-    toPath: `/${notes[notes.length - 1].date}`,
-    redirectInBrowser: true,
-    statusCode: 200,
-  })
+
+  // return await actions.createRedirect({
+  //   fromPath: "/",
+  //   toPath: `/${notes[notes.length - 1].date}`,
+  //   redirectInBrowser: true,
+  //   statusCode: 200,
+  // })
 }

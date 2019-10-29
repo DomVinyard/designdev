@@ -1,13 +1,10 @@
 [[redirects]]
-  from = "https://yearday.org/*"
-  to = "https://dom.fyi/2019.220"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
-
+from = "https://domfyi.netlify.com/*"
+to = "https://dom.fyi/:splat"
+status = 301
+force = true
 [[redirects]]
-  from = "https://yearday.org"
-  to = "https://dom.fyi/2019.220"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+from = "https://yearday.org"
+to = "https://dom.fyi/2019.220"
+status = 200
+force = true
