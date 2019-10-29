@@ -37,10 +37,7 @@ module.exports = {
     `gatsby-plugin-offline`, // works offline
     `gatsby-transformer-remark`, // converts markdown to html
     `gatsby-plugin-react-helmet`, // add page headers
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: { generateMatchPathRewrites: true },
-    }, // add Netlify security headers
+    `gatsby-plugin-netlify`, // add Netlify security headers
     { resolve: `gatsby-plugin-manifest`, options: Manifest }, // metadata
   ],
 }
