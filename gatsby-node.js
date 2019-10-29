@@ -6,6 +6,7 @@
 
 const { resolve } = require("path")
 const YearDay = require("./YearDay")
+const redirects = require("./redirects")
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query GetNotes {
@@ -56,18 +57,20 @@ exports.createPages = async ({ graphql, actions }) => {
     toPath: "https://dom.fyi/:splat",
     isPermanent: true,
   })
-  await actions.createRedirect({
-    fromPath: "https://yearday.org",
-    toPath: "/2019.220",
-    statusCode: "200!",
-    isPermanent: true,
-    redirectInBrowser: true,
+
+  Object.entries(redirects).forEach(async ([key, value]) => {
+    await actions.createRedirect({
+      fromPath: `https://${key}`,
+      toPath: `/${value}`,
+      statusCode: "200!",
+    })
+    await actions.createRedirect({
+      fromPath: `https://www.${key}`,
+      toPath: `/${value}`,
+      statusCode: "200!",
+    })
   })
-  await actions.createRedirect({
-    fromPath: "https://www.yearday.org",
-    toPath: "/2019.220",
-    statusCode: "200!",
-  })
+
   return await actions.createRedirect({
     fromPath: "https://dom.fyi",
     toPath: `https://dom.fyi/${notes[notes.length - 1].date}`,
