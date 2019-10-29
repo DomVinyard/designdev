@@ -57,14 +57,11 @@ exports.createPages = async ({ graphql, actions }) => {
     isPermanent: true,
   })
   await actions.createRedirect({
-    fromPath: "https://www.yearday.org",
-    toPath: "https://yearday.org",
-    statusCode: 302,
-  })
-  await actions.createRedirect({
-    fromPath: "https://yearday.org/*",
+    fromPath: "https://yearday.org",
     toPath: "https://dom.fyi/2019.220",
     statusCode: 200,
+    isPermanent: true,
+    redirectInBrowser: true,
   })
   return await actions.createRedirect({
     fromPath: "https://dom.fyi",
