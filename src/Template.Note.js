@@ -66,9 +66,9 @@ export default ({
           }}
         />
       )}
-      {console_posts &&
-        console_posts.length &&
-        console_posts.map(post => console.log(`🚀${post}`))}
+      {console_posts && console_posts.length > 0
+        ? console_posts.map(post => console.log(`🚀${post}`))
+        : ""}
       <footer>
         {next && (
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
