@@ -66,9 +66,14 @@ export default ({
           }}
         />
       )}
-      {console_post ? setTimeout(() => console.clear(), 100) : ""}
+      {/* {console_post ? setTimeout(() => console.clear(), 100) : ""} */}
       {console_post
-        ? setTimeout(() => console.log(`🚀${console_post}`), 200)
+        ? console.log(
+            setTimeout(() => {
+              console.clear()
+              setTimeout(() => console.log(`🚀${console_post}`), 100)
+            }, 200)
+          )
         : ""}
       <footer>
         {next && (
