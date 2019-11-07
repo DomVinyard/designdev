@@ -32,6 +32,7 @@ export default ({ pageContext: { notes } }) => (
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment>
           <div
+            key={date}
             style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
           >
             <Link to={`/${date}`}>

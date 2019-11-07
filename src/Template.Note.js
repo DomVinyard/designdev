@@ -6,6 +6,9 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
+import showdown from "showdown"
+const converter = new showdown.Converter()
+
 export const query = graphql`
   query($date: String) {
     dropbox: dropboxNode(localFile: { name: { eq: $date } }) {
@@ -31,6 +34,8 @@ export default ({
   },
   pageContext: { next, first, gapAfter },
 }) => {
+  const [blog_post, ...console_posts] = rawMarkdownBody.split("👤")
+  const new_html = converter.makeHtml(blog_post)
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const [year, day] = date.split(".")
   return (
@@ -54,11 +59,16 @@ export default ({
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
-      {html && (
+      {new_html && (
         <article
-          dangerouslySetInnerHTML={{ __html: html.replace("<p>🚀</p>\n", "") }}
+          dangerouslySetInnerHTML={{
+            __html: new_html.replace("<p>🚀</p>\n", ""),
+          }}
         />
       )}
+      {console_posts &&
+        console_posts.length &&
+        console_posts.map(post => console.log(post))}
       <footer>
         {next && (
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
