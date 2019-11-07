@@ -30,9 +30,8 @@ export default ({ pageContext: { notes } }) => (
     </header>
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
-        <React.Fragment>
+        <React.Fragment key={date}>
           <div
-            key={date}
             style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
           >
             <Link to={`/${date}`}>
