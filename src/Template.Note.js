@@ -66,14 +66,8 @@ export default ({
           }}
         />
       )}
-      {console_post
-        ? console.log(
-            `${eval(`clear()`)} ${setTimeout(
-              () => console.log(`🚀${console_post}`),
-              1000
-            )}`
-          )
-        : ""}
+      {console_post ? console.clear() : ""}
+      {console_post ? console.log(`🚀${console_post}`) : ""}
       <footer>
         {next && (
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
