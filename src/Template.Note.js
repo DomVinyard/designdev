@@ -34,7 +34,7 @@ export default ({
   },
   pageContext: { next, first, gapAfter },
 }) => {
-  const [blog_post, ...console_posts] = rawMarkdownBody.split("👤")
+  const [blog_post, console_post] = rawMarkdownBody.split("👤")
   const new_html = converter.makeHtml(blog_post)
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const [year, day] = date.split(".")
@@ -66,8 +66,13 @@ export default ({
           }}
         />
       )}
-      {console_posts && console_posts.length > 0
-        ? console_posts.map(post => console.log(`🚀${post}`))
+      {console_post
+        ? console.log(
+            `${eval(`clear()`)} ${setTimeout(
+              () => console.log(`🚀${console_post}`),
+              1000
+            )}`
+          )
         : ""}
       <footer>
         {next && (
