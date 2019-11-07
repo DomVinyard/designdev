@@ -73,7 +73,7 @@ export default ({
               console.clear()
               setTimeout(() => console.log(`🚀${console_post}`), 100)
             }, 200)
-          )
+          ) && ""
         : ""}
       <footer>
         {next && (
