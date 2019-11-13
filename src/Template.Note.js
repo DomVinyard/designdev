@@ -33,7 +33,7 @@ export default ({
   },
   pageContext: { next, gapAfter },
 }) => {
-  let [note, console_note] = rawMarkdownBody.split("👤")
+  let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
   //
   // Build a note
@@ -70,7 +70,7 @@ export default ({
             } catch (error) {
               console.log(error)
             }
-          })}
+          }, 300)}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
@@ -80,15 +80,8 @@ export default ({
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
         )}
       </footer>
-      {setTimeout(() => {
-        //
-        // post the console note
-        console.clear()
-        console_note &&
-          setTimeout(() => {
-            console.log(`🚀${console_note}`)
-          }, 100)
-      }, 100) && ""}
+      {setTimeout(() => console.clear(), 100) && ""}
+      {dev_note && setTimeout(() => console.log(`🚀${dev_note}`), 200) && ""}
     </main>
   )
 }
