@@ -38,6 +38,11 @@ export default ({
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
+  const getTitle = ({ location: { hostname } }) => {
+    const isExternal = hostname !== "localhost" && hostname !== "dom.fyi"
+    if (isExternal) return hostname
+    return date
+  }
   //
   // * Main note
   return (
@@ -56,21 +61,18 @@ export default ({
         <h1>
           {`🚀`}
           {isBeforeYearday ? "" : date}
+
           {setTimeout(() => {
-            try {
-              console.log(window.location, window.location.hostname)
-              if (
-                window.location.hostname === "localhost" ||
-                window.location.hostname === "dom.fyi"
-              ) {
-                console.log("🚀", date)
-              } else {
-                console.log("🚀", window.location.hostname)
+            //
+            // post the console note
+            setTimeout(() => {
+              try {
+                console.log("🚀", getTitle(window))
+              } catch (error) {
+                console.log(error)
               }
-            } catch (error) {
-              console.log(error)
-            }
-          }, 300)}
+            }, 300)
+          }, 300) && ""}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
@@ -80,10 +82,16 @@ export default ({
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
         )}
       </footer>
-
       {/* dev note */}
-      {setTimeout(() => console.clear(), 100) && ""}
-      {dev_note && setTimeout(() => console.log(`🚀${dev_note}`), 200) && ""}
+      {setTimeout(() => {
+        //
+        // post the console note
+        console.clear()
+        dev_note &&
+          setTimeout(() => {
+            console.log(`🚀${dev_note}`)
+          }, 100)
+      }, 100) && ""}
     </main>
   )
 }
