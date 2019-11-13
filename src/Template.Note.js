@@ -38,9 +38,9 @@ export default ({
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
+  //
+  // * Main note
   return (
-    //
-    // * Main note
     <main>
       <Helmet>
         <meta charSet="utf-8" />
