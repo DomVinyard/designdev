@@ -56,6 +56,21 @@ export default ({
         <h1>
           {`🚀`}
           {isBeforeYearday ? "" : date}
+          {setTimeout(() => {
+            try {
+              console.log(window.location, window.location.hostname)
+              if (
+                window.location.hostname === "localhost" ||
+                window.location.hostname === "dom.fyi"
+              ) {
+                console.log("page", date)
+              } else {
+                console.log("page", window.location.hostname)
+              }
+            } catch (error) {
+              console.log(error)
+            }
+          })}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
@@ -72,19 +87,6 @@ export default ({
         console_note &&
           setTimeout(() => {
             console.log(`🚀${console_note}`)
-            try {
-              console.log(window.location, window.location.hostname)
-              if (
-                window.location.hostname === "localhost" ||
-                window.location.hostname === "dom.fyi"
-              ) {
-                console.log("page", date)
-              } else {
-                console.log("page", window.location.hostname)
-              }
-            } catch (error) {
-              console.log(error)
-            }
           }, 100)
       }, 100) && ""}
     </main>
