@@ -1,14 +1,14 @@
-/* 
-  An individual dom.fyi note.
-*/
+/*
+ * An individual dom.fyi note.
+ */
 
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
 const ReactMarkdown = require("react-markdown")
-
-// For each note data
+//
+// * Note data
 export const query = graphql`
   query($date: String) {
     dropbox: dropboxNode(localFile: { name: { eq: $date } }) {
@@ -35,12 +35,12 @@ export default ({
 }) => {
   let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
-  //
-  // Build a note
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
   return (
+    //
+    // * Main note
     <main>
       <Helmet>
         <meta charSet="utf-8" />
@@ -63,9 +63,9 @@ export default ({
                 window.location.hostname === "localhost" ||
                 window.location.hostname === "dom.fyi"
               ) {
-                console.log("page", date)
+                console.log("🚀", date)
               } else {
-                console.log("page", window.location.hostname)
+                console.log("🚀", window.location.hostname)
               }
             } catch (error) {
               console.log(error)
@@ -80,6 +80,8 @@ export default ({
           <h2 children={<Link to={next} children={`${nextText} ›`} />} />
         )}
       </footer>
+
+      {/* dev note */}
       {setTimeout(() => console.clear(), 100) && ""}
       {dev_note && setTimeout(() => console.log(`🚀${dev_note}`), 200) && ""}
     </main>
