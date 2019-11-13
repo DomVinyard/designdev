@@ -2,7 +2,7 @@
  * An individual dom.fyi note.
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
@@ -38,15 +38,7 @@ export default ({
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
-  const getTitle = ({ location: { hostname } }) => {
-    try {
-      const isExternal = hostname !== "localhost" && hostname !== "dom.fyi"
-      if (isExternal) return hostname
-      return date
-    } catch (error) {
-      return date
-    }
-  }
+
   //
   // * Main note
   return (
@@ -64,15 +56,7 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {isBeforeYearday ? "" : getTitle(window)}
-
-          {setTimeout(() => {
-            //
-            // post the console note
-            setTimeout(() => {
-              console.log("🚀", getTitle(window))
-            }, 300)
-          }, 300) && ""}
+          {isBeforeYearday ? "" : date}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
