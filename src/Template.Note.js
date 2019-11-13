@@ -39,9 +39,13 @@ export default ({
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
   const getTitle = ({ location: { hostname } }) => {
-    const isExternal = hostname !== "localhost" && hostname !== "dom.fyi"
-    if (isExternal) return hostname
-    return date
+    try {
+      const isExternal = hostname !== "localhost" && hostname !== "dom.fyi"
+      if (isExternal) return hostname
+      return date
+    } catch (error) {
+      return date
+    }
   }
   //
   // * Main note
@@ -60,17 +64,13 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {isBeforeYearday ? "" : date}
+          {isBeforeYearday ? "" : getTitle(window)}
 
           {setTimeout(() => {
             //
             // post the console note
             setTimeout(() => {
-              try {
-                console.log("🚀", getTitle(window))
-              } catch (error) {
-                console.log(error)
-              }
+              console.log("🚀", getTitle(window))
             }, 300)
           }, 300) && ""}
         </h1>
@@ -84,13 +84,8 @@ export default ({
       </footer>
       {/* dev note */}
       {setTimeout(() => {
-        //
-        // post the console note
         console.clear()
-        dev_note &&
-          setTimeout(() => {
-            console.log(`🚀${dev_note}`)
-          }, 100)
+        dev_note && setTimeout(() => console.log(`🚀${dev_note}`), 100)
       }, 100) && ""}
     </main>
   )
