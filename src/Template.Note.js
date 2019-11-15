@@ -89,9 +89,8 @@ export default ({
         dev_note &&
           setTimeout(() => {
             console.log(`🚀${dev_note}`)
-            console.log({ isLatest })
-          }, 100)
-      }, 100) && ""}
+          }, 250)
+      }, 250) && ""}
     </main>
   )
 }
