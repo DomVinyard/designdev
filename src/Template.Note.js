@@ -2,9 +2,13 @@
  * An individual dom.fyi note.
  */
 
-import React, { useEffect } from "react"
+import React from "react"
+import YearDay from "../YearDay"
+import TimeAgo from "react-timeago"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+
+// in your react component
 
 const ReactMarkdown = require("react-markdown")
 //
@@ -31,13 +35,20 @@ export default ({
       },
     },
   },
-  pageContext: { next, gapAfter },
+  pageContext: { next, gapAfter, isLatest },
 }) => {
   let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const isBeforeYearday = year == 2019 && day < 220
+  const formatter = (value, unit, suffix, epochSeconds) => {
+    const secondsAgo = new Date() - epochSeconds
+    const oneDay = 1000 * 60 * 60 * 24
+    if (secondsAgo < oneDay) return " today"
+    if (secondsAgo < oneDay * 2) return " yesterday"
+    return date
+  }
 
   //
   // * Main note
@@ -56,7 +67,13 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {isBeforeYearday ? "" : date}
+          {isBeforeYearday ? (
+            ""
+          ) : isLatest ? (
+            <TimeAgo date={YearDay(date)} formatter={formatter} />
+          ) : (
+            date
+          )}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
