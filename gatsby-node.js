@@ -38,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const first = i > 0 ? "" : `/${notes[0].date}`
     const isLatest = i + 1 === notes.length
+    console.log(note, i, isLatest)
     const gapAfter =
       next && YearDay(next.slice(1)).diff(YearDay(note.date), "days")
     note.gapAfter = gapAfter
