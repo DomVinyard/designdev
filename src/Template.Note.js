@@ -78,7 +78,6 @@ export default ({
           ) : (
             date
           )}
-          {console.log({ location: window.location.hostname })}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>
