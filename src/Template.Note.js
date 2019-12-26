@@ -67,11 +67,7 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {typeof window !== `undefined` &&
-          !window.location.hostname.includes("localhost") &&
-          !window.location.hostname.includes("dom.fyi") ? (
-            window.location.hostname
-          ) : isBeforeYearday ? (
+          {isBeforeYearday ? (
             ""
           ) : isLatest ? (
             <TimeAgo date={YearDay(date)} formatter={formatter} />
@@ -83,12 +79,9 @@ export default ({
       </header>
       {note && <article children={<ReactMarkdown source={note} />} />}
       <footer>
-        {next &&
-          ((typeof window !== `undefined` &&
-            window.location.hostname.includes("localhost")) ||
-            window.location.hostname.includes("dom.fyi")) && (
-            <h2 children={<Link to={next} children={`${nextText} ›`} />} />
-          )}
+        {next && (
+          <h2 children={<Link to={next} children={`${nextText} ›`} />} />
+        )}
       </footer>
       {/* dev note */}
       {setTimeout(() => {
