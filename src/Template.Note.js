@@ -67,7 +67,8 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {!window.location.hostname.includes("localhost") &&
+          {typeof window !== `undefined` &&
+          !window.location.hostname.includes("localhost") &&
           !window.location.hostname.includes("dom.fyi") ? (
             window.location.hostname
           ) : isBeforeYearday ? (
@@ -84,7 +85,8 @@ export default ({
       {note && <article children={<ReactMarkdown source={note} />} />}
       <footer>
         {next &&
-          (window.location.hostname.includes("localhost") ||
+          ((typeof window !== `undefined` &&
+            window.location.hostname.includes("localhost")) ||
             window.location.hostname.includes("dom.fyi")) && (
             <h2 children={<Link to={next} children={`${nextText} ›`} />} />
           )}
