@@ -41,7 +41,6 @@ export default ({
   note = note.replace("🚀\n", "")
   const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
-  const isBeforeYearday = `${year}` === `2019` && day < 220
   const formatter = (value, unit, suffix, epochSeconds) => {
     const secondsAgo = new Date() - epochSeconds
     const oneDay = 1000 * 60 * 60 * 24
@@ -75,9 +74,7 @@ export default ({
           <Link to={`/${year}`} children={`‹ ${year}`} />
           <h1>
             {`🚀`}
-            {isBeforeYearday ? (
-              ""
-            ) : isLatest ? (
+            {isLatest ? (
               <TimeAgo date={YearDay(date)} formatter={formatter} />
             ) : (
               date.split(".").pop()
