@@ -74,6 +74,9 @@ export default ({
           ) : (
             date
           )}
+          {console.log(
+            typeof window !== "undefined" && window.location.hostname
+          )}
         </h1>
         <Link to="/list" children={"‹ view all"} />
       </header>

@@ -52,6 +52,9 @@ exports.createPages = async ({ graphql, actions }) => {
     context: { notes },
   })
 
+  const activeYears = [...new Set(notes.map(note => note.date.split(".")[0]))]
+  console.log(activeYears)
+
   await actions.createRedirect({
     fromPath: "https://domfyi.netlify.com/*",
     toPath: "https://dom.fyi/:splat",
