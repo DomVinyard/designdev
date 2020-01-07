@@ -27,23 +27,13 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
     <header>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
-          🚀
+          {year} 🚀dom.fyi
         </span>
-        <select
-          onChange={e => {
-            const target = e.target.value
-            console.log({ target })
-            navigate(`/${target}`)
-          }}
-          defaultValue={year}
-        >
-          {activeYears.map(activeYear => {
-            return <option key={activeYear}>{activeYear}</option>
-          })}
-        </select>
       </h1>
       <a children="spacer" style={{ opacity: 0 }}></a>
     </header>
+    {year > 2019 && <Link to={`/${+year - 1}`} children={`‹ ${+year - 1}`} />}
+
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment key={date}>
@@ -64,7 +54,12 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
       ))}
     </nav>
     <div>
-      <Rocket />
+      {year < new Date().getFullYear() && (
+        <React.Fragment>
+          <Rocket />
+          <Link to={`/${+year + 1}`} children={`${+year + 1} ›`} />
+        </React.Fragment>
+      )}
     </div>
   </main>
 )

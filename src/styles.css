@@ -18,12 +18,13 @@ main {
 }
 article,
 nav {
-  font-size: 1.5rem;
+  font-size: 1.33rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
 article {
   line-height: 2.55rem;
+  min-height: 25vh;
 }
 nav {
   line-height: 2.25rem;
@@ -31,14 +32,21 @@ nav {
 header {
   margin-bottom: 3rem;
   margin-top: 3rem;
+  display: flex;
+}
+
+select {
+  font-size: 2rem;
 }
 h1 {
   font-size: 2rem;
   margin-bottom: 0.1rem;
   cursor: default;
+  margin-top: -0.7rem;
+  margin-left: 0.3rem;
 }
 footer h2 a {
-  font-size: 1.5rem;
+  font-size: 1.33rem;
   color: rgb(204, 11, 28) !important;
 }
 nav div {
@@ -108,7 +116,7 @@ nav span p a {
 @media only screen and (max-width: 900px) {
   article,
   nav {
-    font-size: 1.35rem;
+    font-size: 1.33rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
@@ -134,7 +142,7 @@ nav span p a {
     padding-bottom: 2.6rem;
   }
   footer h2 a {
-    font-size: 1.3rem;
+    font-size: 1.33rem;
   }
   nav div {
     height: 32px;
