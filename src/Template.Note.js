@@ -67,7 +67,7 @@ export default ({
       {typeof window !== "undefined" &&
       !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
         <header>
-          <Link to={`/${year}`} children={"‹ dom.fyi"} />
+          <Link to={`/${year}`} children={"‹🚀"} />
           <h1>{typeof window !== "undefined" && window.location.hostname}</h1>
         </header>
       ) : (
