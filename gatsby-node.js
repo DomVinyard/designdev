@@ -76,6 +76,16 @@ exports.createPages = async ({ graphql, actions }) => {
       toPath: `/${value}`,
       statusCode: "200!",
     })
+    await actions.createRedirect({
+      fromPath: `https://${key}/*`,
+      toPath: `/${value}`,
+      statusCode: "200!",
+    })
+    await actions.createRedirect({
+      fromPath: `https://www.${key}/*`,
+      toPath: `/${value}`,
+      statusCode: "200!",
+    })
   })
 
   return await actions.createRedirect({
