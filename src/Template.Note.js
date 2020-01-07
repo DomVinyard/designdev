@@ -101,7 +101,7 @@ export default ({
       </footer>
       {/* dev note */}
       {setTimeout(() => {
-        if (!dev_note) return
+        if (!dev_note || typeof window === "undefined") return
         console.clear()
         dev_note &&
           setTimeout(() => {
