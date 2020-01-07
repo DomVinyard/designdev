@@ -5,7 +5,7 @@
 
 import React from "react"
 import { Helmet } from "react-helmet"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import GithubCorner from "react-github-corner"
 const github = "https://github.com/domfyi/dom.fyi"
 
@@ -13,7 +13,7 @@ const breakLength = 10 // If no post for this many days, consider it a new conte
 
 const Rocket = () => <div className="list_divider">🚀</div>
 
-export default ({ pageContext: { notes } }) => (
+export default ({ pageContext: { notes, year, activeYears = [] } }) => (
   <main>
     <Helmet>
       <title>dom.fyi</title>
@@ -25,7 +25,23 @@ export default ({ pageContext: { notes } }) => (
       style={{ position: "fixed", right: 0, top: 0 }}
     />
     <header>
-      <h1>{`🚀`}dom.fyi</h1>
+      <h1>
+        <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
+          🚀
+        </span>
+        <select
+          onChange={e => {
+            const target = e.target.value
+            console.log({ target })
+            navigate(`/${target}`)
+          }}
+          defaultValue={year}
+        >
+          {activeYears.map(activeYear => {
+            return <option key={activeYear}>{activeYear}</option>
+          })}
+        </select>
+      </h1>
       <a children="spacer" style={{ opacity: 0 }}></a>
     </header>
     <nav>
@@ -36,8 +52,7 @@ export default ({ pageContext: { notes } }) => (
           >
             <Link to={`/${date}`}>
               <label>
-                <span style={{ fontSize: "0.85em" }}>{date.split(".")[0]}</span>
-                .{date.split(".")[1]}
+                <span style={{ fontSize: "0.85em" }}>{date.split(".")[1]}</span>
               </label>
               <span style={{ marginLeft: 4 }}>
                 {content.excerpt.replace("🚀", "").split(mark)[0]}

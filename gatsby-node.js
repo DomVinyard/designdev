@@ -53,11 +53,15 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const activeYears = [...new Set(notes.map(note => note.date.split(".")[0]))]
-  activeYears.map(year => {
+  activeYears.map(async year => {
     await actions.createPage({
       path: `/${year}`,
       component: resolve(`./src/Template.List.js`),
-      context: { notes: notes.filter(note => note.date.split(".")[0] === year) },
+      context: {
+        year,
+        activeYears,
+        notes: notes.filter(note => note.date.split(".")[0] === year),
+      },
     })
   })
 
