@@ -83,7 +83,15 @@ export default ({
         </header>
       )}
 
-      {note && <article children={<ReactMarkdown source={note} />} />}
+      {note && (
+        <article
+          children={
+            <div>
+              <ReactMarkdown source={note} />
+            </div>
+          }
+        />
+      )}
       <footer>
         {next &&
           (typeof window === "undefined" ||

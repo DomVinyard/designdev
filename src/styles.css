@@ -25,6 +25,8 @@ nav {
 article {
   line-height: 2.55rem;
   min-height: 25vh;
+  display: flex;
+  align-items: center;
 }
 nav {
   line-height: 2.25rem;
