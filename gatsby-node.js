@@ -53,12 +53,12 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const activeYears = [...new Set(notes.map(note => note.date.split(".")[0]))]
-  console.log(activeYears)
-
-  await actions.createRedirect({
-    fromPath: "https://domfyi.netlify.com/*",
-    toPath: "https://dom.fyi/:splat",
-    isPermanent: true,
+  activeYears.map(year => {
+    await actions.createPage({
+      path: `/${year}`,
+      component: resolve(`./src/Template.List.js`),
+      context: { notes: notes.filter(note => note.date.split(".")[0] === year) },
+    })
   })
 
   Object.entries(redirects).forEach(async ([key, value]) => {
