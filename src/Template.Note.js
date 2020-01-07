@@ -64,26 +64,28 @@ export default ({
         <meta property="og:description" content={excerpt.replace("🚀", "")} />
         <meta property="og:image" content="src/icon.png" />
       </Helmet>
-      <header>
-        <h1>
-          {`🚀`}
-          {typeof window !== "undefined" &&
-          !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
-            `${typeof window !== "undefined" && window.location.hostname}`
-          ) : isBeforeYearday ? (
-            ""
-          ) : isLatest ? (
-            <TimeAgo date={YearDay(date)} formatter={formatter} />
-          ) : (
-            date
-          )}
-          {console.log(
-            typeof window !== "undefined" &&
-              !["dom.fyi", "localhost"].includes(window.location.hostname)
-          )}
-        </h1>
-        <Link to="/list" children={"‹ view all"} />
-      </header>
+      {typeof window !== "undefined" &&
+      !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
+        <header>
+          <h1>{typeof window !== "undefined" && window.location.hostname}</h1>
+          <Link to="/list" children={"‹ 🚀 dom.fyi"} />
+        </header>
+      ) : (
+        <header>
+          <h1>
+            {`🚀`}
+            {isBeforeYearday ? (
+              ""
+            ) : isLatest ? (
+              <TimeAgo date={YearDay(date)} formatter={formatter} />
+            ) : (
+              date
+            )}
+          </h1>
+          <Link to="/list" children={"‹ view all"} />
+        </header>
+      )}
+
       {note && <article children={<ReactMarkdown source={note} />} />}
       <footer>
         {next && (
