@@ -67,7 +67,10 @@ export default ({
       <header>
         <h1>
           {`🚀`}
-          {isBeforeYearday ? (
+          {typeof window !== "undefined" &&
+          !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
+            `${typeof window !== "undefined" && window.location.hostname}`
+          ) : isBeforeYearday ? (
             ""
           ) : isLatest ? (
             <TimeAgo date={YearDay(date)} formatter={formatter} />
@@ -75,7 +78,8 @@ export default ({
             date
           )}
           {console.log(
-            typeof window !== "undefined" && window.location.hostname
+            typeof window !== "undefined" &&
+              !["dom.fyi", "localhost"].includes(window.location.hostname)
           )}
         </h1>
         <Link to="/list" children={"‹ view all"} />
