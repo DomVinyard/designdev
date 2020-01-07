@@ -68,7 +68,7 @@ export default ({
       !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
         <header>
           <h1>{typeof window !== "undefined" && window.location.hostname}</h1>
-          <Link to="/list" children={"‹ 🚀 dom.fyi"} />
+          <Link to="/list" children={"‹ dom.fyi"} />
         </header>
       ) : (
         <header>
@@ -88,9 +88,11 @@ export default ({
 
       {note && <article children={<ReactMarkdown source={note} />} />}
       <footer>
-        {next && (
-          <h2 children={<Link to={next} children={`${nextText} ›`} />} />
-        )}
+        {next &&
+          (typeof window === "undefined" ||
+            ["dom.fyi", "localhost"].includes(window.location.hostname)) && (
+            <h2 children={<Link to={next} children={`${nextText} ›`} />} />
+          )}
       </footer>
       {/* dev note */}
       {setTimeout(() => {
