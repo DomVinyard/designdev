@@ -57,7 +57,9 @@ exports.createPages = async ({ graphql, actions }) => {
         activeYears,
         notes: notes
           .filter(note => note.date.split(".")[0] === year)
-          .sort((a, b) => (+a.date.slice(1) < +b.date.slice(1) ? 1 : -1)),
+          .sort((a, b) =>
+            +a.date.split(".")[1] < +b.date.split(".")[1] ? -1 : 1
+          ),
       },
     })
   })
