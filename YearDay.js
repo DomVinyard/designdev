@@ -12,7 +12,7 @@ const StringToDate = (arg, options = {}) => {
   if (typeof arg === "string") {
     try {
       const valid = /^\d{4}\.\d{1,3}\.?\d{1,8}$/.test(arg)
-      if (!valid) throw { error: "invalid" }
+      if (!valid) throw new Error("invalid")
       const [year, day, time] = arg.split(".")
       const paddedDay = day.padStart(3, "0")
       const ISO8601 = [year, paddedDay].join("-")
