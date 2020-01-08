@@ -46,11 +46,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { date: note.date, next, gapAfter, isLatest },
     })
   })
-  await actions.createPage({
-    path: `/list`,
-    component: resolve(`./src/Template.List.js`),
-    context: { notes },
-  })
 
   const activeYears = [...new Set(notes.map(note => note.date.split(".")[0]))]
   activeYears.map(async year => {
@@ -60,9 +55,16 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         year,
         activeYears,
-        notes: notes.filter(note => note.date.split(".")[0] === year),
+        notes: notes
+          .filter(note => note.date.split(".")[0] === year)
+          .sort((a, b) => (+a.date.slice(1) < +b.date.slice(1) ? 1 : -1)),
       },
     })
+  })
+  await actions.createRedirect({
+    fromPath: `/list`,
+    toPath: `/`,
+    statusCode: "200!",
   })
 
   Object.entries(redirects).forEach(async ([key, value]) => {
