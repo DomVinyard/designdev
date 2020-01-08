@@ -47,8 +47,15 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const isLatest = i + 1 === notes.length
     const gapAfter =
-      next && YearDay(next.slice(1)).diff(YearDay(note.date), "days")
+      next &&
+      notes[i + 1] &&
+      YearDay(notes[i + 1].date).diff(YearDay(note.date), "days")
     note.gapAfter = gapAfter
+    // console.log({
+    //   next: [notes[i + 1].date, YearDay(notes[i + 1].date)],
+    //   current: [note.date, YearDay(note.date)],
+    //   gapAfter,
+    // })
     actions.createPage({
       path: note.date,
       component: resolve(`./src/Template.Note.js`),
