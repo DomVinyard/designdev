@@ -34,7 +34,9 @@ exports.createPages = async ({ graphql, actions }) => {
         /^\d{4}\.\d{1,3}$/.test(note.date) && // with valid date
         (isPublished(note.content.excerpt) || isDevMode) // and a 🚀 on line 1
     )
-    .sort((a, b) => (YearDay(a.date) < YearDay(b.date) ? -1 : 1))
+    .sort((a, b) =>
+      YearDay(a.date, "DD/MM/YYYY") < YearDay(b.date, "DD/MM/YYYY") ? -1 : 1
+    )
   notes.forEach((note, i) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const isLatest = i + 1 === notes.length
