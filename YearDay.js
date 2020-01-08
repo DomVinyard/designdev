@@ -21,7 +21,6 @@ const StringToDate = (arg, options = {}) => {
       if (options.world) yeardayDate.add(10000, "years") // https://en.wikipedia.org/wiki/Holocene_calendar
       return yeardayDate
     } catch (error) {
-      // console.log(error)
       return moment.invalid()
     }
   }

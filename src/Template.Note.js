@@ -39,6 +39,7 @@ export default ({
 }) => {
   let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
+  const [year, day] = date.split(".")
   const nextText = gapAfter === 1 ? "next day" : `${gapAfter} days later`
   const formatter = (value, unit, suffix, epochSeconds) => {
     const secondsAgo = new Date() - epochSeconds
