@@ -93,11 +93,9 @@ export default ({
         />
       )}
       <footer>
-        {next &&
-          (typeof window === "undefined" ||
-            ["dom.fyi", "localhost"].includes(window.location.hostname)) && (
-            <h2 children={<Link to={next} children={`${nextText} ›`} />} />
-          )}
+        {next && (
+          <h2 children={<Link to={next} children={`${nextText} ›`} />} />
+        )}
       </footer>
       {/* dev note */}
       {setTimeout(() => {

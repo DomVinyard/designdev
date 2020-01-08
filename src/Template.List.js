@@ -56,8 +56,7 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
     <div>
       {year < new Date().getFullYear() && (
         <React.Fragment>
-          <Rocket />
-          <h1 style={{ marginTop: "3rem" }}>
+          <h1 style={{ marginTop: "0" }}>
             <Link to={`/${+year + 1}`} children={`${+year + 1} ›`} />
           </h1>
         </React.Fragment>
