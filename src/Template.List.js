@@ -24,15 +24,14 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
     />
-    <header>
+    <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
           {year} 🚀dom.fyi
         </span>
       </h1>
-      <a children="spacer" style={{ opacity: 0 }}></a>
+      <div>{year > 2019 && <Link to={`/2019`} children={`‹ start`} />}</div>
     </header>
-    {year > 2019 && <Link to={`/${+year - 1}`} children={`‹ ${+year - 1}`} />}
 
     <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
