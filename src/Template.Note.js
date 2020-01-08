@@ -63,13 +63,7 @@ export default ({
         <meta property="og:description" content={excerpt.replace("🚀", "")} />
         <meta property="og:image" content="src/icon.png" />
       </Helmet>
-      {typeof window !== "undefined" &&
-      !["dom.fyi", "localhost"].includes(window.location.hostname) ? (
-        <header>
-          <Link to={`https://dom.fyi/${year}`} children={"‹🚀"} />
-          <h1>{typeof window !== "undefined" && window.location.hostname}</h1>
-        </header>
-      ) : (
+      {typeof window !== "undefined" && (
         <header>
           <Link to={`/${year}`} children={`‹ ${year}`} />
           <h1>
