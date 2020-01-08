@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
       : -1
   )
 
-  console.log({ sorted: notes.map(n => n.date) })
+  console.log({ notesPublished: notes.map(n => n.date) })
 
   notes.forEach((note, i) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
@@ -65,6 +65,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const activeYears = [...new Set(notes.map(note => note.date.split(".")[0]))]
   activeYears.map(async year => {
+    console.log("📅 year list", year)
     await actions.createPage({
       path: `/${year}`,
       component: resolve(`./src/Template.List.js`),
