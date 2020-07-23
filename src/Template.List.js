@@ -48,7 +48,7 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
               </span>
             </Link>
           </div>
-          {gapAfter > breakLength && <Rocket />}
+          {gapAfter > breakLength && i + 1 < notes.length && <Rocket />}
         </React.Fragment>
       ))}
     </nav>

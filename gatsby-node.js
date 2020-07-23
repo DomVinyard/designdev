@@ -113,7 +113,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   return await actions.createRedirect({
     fromPath: "https://dom.fyi",
-    toPath: `https://dom.fyi/${notes[notes.length - 1].date}`,
+    toPath: `https://dom.fyi/2019}`,
     redirectInBrowser: true,
     statusCode: 200,
   })
