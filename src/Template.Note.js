@@ -46,7 +46,7 @@ export default ({
     const oneDay = 1000 * 60 * 60 * 24
     if (secondsAgo < oneDay) return " today"
     if (secondsAgo < oneDay * 2) return " yesterday"
-    return date
+    return day
   }
 
   //
