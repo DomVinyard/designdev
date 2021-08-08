@@ -9,11 +9,9 @@ import { Link, navigate } from "gatsby"
 import GithubCorner from "react-github-corner"
 const github = "https://github.com/domfyi/dom.fyi"
 
-const breakLength = 10 // If no post for this many days, consider it a new content group
-
 const Rocket = () => <div className="list_divider">🚀</div>
 
-export default ({ pageContext: { notes, year, activeYears = [] } }) => (
+export default ({ pageContext: { notes } }) => (
   <main>
     <Helmet>
       <title>dom.fyi</title>
@@ -33,7 +31,7 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
       <div>{<Link to={`/`} children={`‹ home`} />}</div>
     </header>
 
-    <nav>
+    {/* <nav>
       {notes.map(({ date, content, gapAfter }, i) => (
         <React.Fragment key={date}>
           <div
@@ -51,16 +49,27 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
           {gapAfter > breakLength && i + 1 < notes.length && <Rocket />}
         </React.Fragment>
       ))}
-    </nav>
-    {/* <div>
-      {year < new Date().getFullYear() && (
-        <React.Fragment>
-          <h1 style={{ marginTop: "0" }}>
-            <Link to={`/${+year + 1}`} children={`${+year + 1} ›`} />
-          </h1>
-        </React.Fragment>
-      )}
-    </div> */}
+    </nav> */}
+    <div>
+      <p>
+        Bio about dom
+      </p>
+      <React.Fragment>
+        <h1 style={{ marginTop: "0" }}>
+          <Link to={`/2019`} children={`2019 ›`} />
+        </h1>
+      </React.Fragment>
+      <React.Fragment>
+        <h1 style={{ marginTop: "0" }}>
+          <Link to={`/2020`} children={`2020 ›`} />
+        </h1>
+      </React.Fragment>
+      <React.Fragment>
+        <h1 style={{ marginTop: "0" }}>
+          <Link to={`/2021`} children={`2021 ›`} />
+        </h1>
+      </React.Fragment>
+    </div>
   </main>
 )
 
