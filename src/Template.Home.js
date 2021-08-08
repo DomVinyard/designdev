@@ -25,7 +25,7 @@ export default ({ pageContext: { notes } }) => (
     <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
-          {year} 🚀dom.fyi
+          🚀dom vinyard personal blog
         </span>
       </h1>
       <div>{<Link to={`/`} children={`‹ home`} />}</div>
