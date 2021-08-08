@@ -18,10 +18,10 @@ export default ({ pageContext: { notes } }) => (
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    <GithubCorner
+    {/* <GithubCorner
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
-    />
+    /> */}
     <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
