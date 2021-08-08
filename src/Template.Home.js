@@ -14,7 +14,7 @@ const Rocket = () => <div className="list_divider">🚀</div>
 export default ({ pageContext: { notes } }) => (
   <main>
     <Helmet>
-      <title>dom.fyi</title>
+      <title>dom.vin</title>
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
@@ -25,10 +25,9 @@ export default ({ pageContext: { notes } }) => (
     <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
-          dom vinyard
+          dom.vin
         </span>
       </h1>
-      <div>{<Link to={`/`} children={`‹ home`} />}</div>
     </header>
 
     {/* <nav>
