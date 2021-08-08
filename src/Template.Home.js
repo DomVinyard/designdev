@@ -58,11 +58,11 @@ export default ({ pageContext: { notes } }) => (
           <Link to={`/2021`} children={`2021 ›`} />
         </h1>
       </React.Fragment>
-      <React.Fragment>
+      {/* <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
           <Link to={`/2020`} children={`2020 ›`} />
         </h1>
-      </React.Fragment>
+      </React.Fragment> */}
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
           <Link to={`/2019`} children={`2019 ›`} />
