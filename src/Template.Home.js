@@ -50,9 +50,9 @@ export default ({ pageContext: { notes } }) => (
       ))}
     </nav> */}
     <div>
-      <p>
+      <h1 style={{opacity: 0.33}}>
         Assorted thoughts and project notes.
-      </p>
+      </h1>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
           <Link to={`/2021`} children={`2021 ›`} />

@@ -52,6 +52,7 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
         </React.Fragment>
       ))}
     </nav>
+    {/* How did the blog start and lots of , the year in which the virus came */}
     {/* <div>
       {year < new Date().getFullYear() && (
         <React.Fragment>
