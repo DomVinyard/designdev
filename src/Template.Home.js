@@ -51,11 +51,11 @@ export default ({ pageContext: { notes } }) => (
     </nav> */}
     <div>
       <p>
-        Bio about dom
+        Assorted thoughts and project notes.
       </p>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
-          <Link to={`/2019`} children={`2019 ›`} />
+          <Link to={`/2021`} children={`2021 ›`} />
         </h1>
       </React.Fragment>
       <React.Fragment>
@@ -65,7 +65,7 @@ export default ({ pageContext: { notes } }) => (
       </React.Fragment>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
-          <Link to={`/2021`} children={`2021 ›`} />
+          <Link to={`/2019`} children={`2019 ›`} />
         </h1>
       </React.Fragment>
     </div>

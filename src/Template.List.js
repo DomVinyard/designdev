@@ -27,7 +27,7 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
     <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
-          <Link to={`/`} children={`dom.vin`} /> 🚀{year}
+          <Link to={`/`} children={`‹ dom.vin`} /> 🚀{year}
         </span>
       </h1>
       <div>{}</div>
