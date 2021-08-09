@@ -32,7 +32,7 @@ export default ({ pageContext: { notes } }) => (
     <div>
       <img src="dom.png" style={{marginBottom: '3rem', width: '100%', maxWidth: 490}}/>
       <h1 style={{opacity: 0.33}}>
-        Assorted thoughts and project notes.
+        Project notes
       </h1>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>

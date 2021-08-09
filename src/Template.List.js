@@ -51,7 +51,7 @@ export default ({ pageContext: { notes, year } }) => (
           >
             <Link to={`/${date}`}>
               <label>
-                <span style={{ fontSize: "0.85em" }}>{date.split(".")[1]}</span>
+                <span style={{ fontSize: "0.85em" }}>{i + 1}</span>
               </label>
               <span style={{ marginLeft: 4 }}>
                 {content.excerpt.replace("🚀", "").split(mark)[0]}

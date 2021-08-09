@@ -7,6 +7,7 @@ import YearDay from "../YearDay"
 import TimeAgo from "react-timeago"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+import moment from 'moment'
 
 // in your react component
 
@@ -37,6 +38,11 @@ export default ({
   },
   pageContext: { next, gapAfter, isLatest },
 }) => {
+  function dateFromDay(year, day){
+    var date = new Date(year, 0); // initialize a date in `year-01-01`
+    return moment(new Date(date.setDate(day))).format('MMMM DD'); // add the number of days
+  }
+  
   let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
   const [year, day] = date.split(".")
@@ -46,7 +52,7 @@ export default ({
     const oneDay = 1000 * 60 * 60 * 24
     if (secondsAgo < oneDay) return " today"
     if (secondsAgo < oneDay * 2) return " yesterday"
-    return day
+    return dateFromDay(year, day)
   }
 
   //
@@ -71,7 +77,7 @@ export default ({
             {isLatest ? (
               <TimeAgo date={YearDay(date)} formatter={formatter} />
             ) : (
-              date.split(".").pop()
+              dateFromDay(year, day)
             )}
           </h1>
         </header>
