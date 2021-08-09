@@ -31,17 +31,21 @@ export default ({ pageContext: { notes } }) => (
     </header>
     <div>
       <img src="dom.png" style={{marginBottom: '3rem', width: '100%', maxWidth: 490}}/>
-      <h1 style={{opacity: 0.33}}>
+      {/* <h1 style={{opacity: 0.33}}>
         Project notes
-      </h1>
+      </h1> */}
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
-          <Link to={`/2021`} children={`2021 ›`} />
+          <Link to={`/2021`}>
+            2021 <span style={{opacity: 0.33}}>Startups</span> ›
+            </Link>
         </h1>
       </React.Fragment>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
-          <Link to={`/2019`} children={`2019 ›`} />
+          <Link to={`/2019`}>
+            2019 <span style={{opacity: 0.33}}>Design & Dev</span> ›
+            </Link>
         </h1>
       </React.Fragment>
     </div>
