@@ -33,7 +33,7 @@ export default ({ pageContext: { notes, year } }) => (
     </header>
 
     {year === '2019' && <h1 style={{opacity: 0.33, marginBottom: '3rem'}}>
-        On Design and Dev and starting a blog.
+        On Design and Dev and starting a blog and catching a train without a ticket as the sun sets against the horizon.
     </h1>
     }
 

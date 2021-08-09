@@ -12,7 +12,7 @@ const github = "https://github.com/domfyi/dom.fyi"
 const Rocket = () => <div className="list_divider">🚀</div>
 
 export default ({ pageContext: { notes } }) => (
-  <main>
+  <main style={{paddingBottom: '3rem', paddingTop: '1.5rem'}}>
     <Helmet>
       <title>dom.vin</title>
       <meta charSet="utf-8" />
@@ -24,7 +24,7 @@ export default ({ pageContext: { notes } }) => (
     /> */}
     <header style={{ display: "block" }}>
       <h1>
-        <span aria-label="rocket" style={{ marginRight: "1rem" , fontSize: '3rem'}} role="img">
+        <span aria-label="rocket" style={{ marginRight: "1rem" , fontSize: '2.5rem'}} role="img">
           Dom Vinyard
         </span>
       </h1>
