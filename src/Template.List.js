@@ -13,14 +13,14 @@ const breakLength = 10 // If no post for this many days, consider it a new conte
 
 const Rocket = () => <div className="list_divider">🚀</div>
 
-export default ({ pageContext: { notes, year, activeYears = [] } }) => (
+export default ({ pageContext: { notes, year } }) => (
   <main>
     <Helmet>
       <title>dom.fyi</title>
       <meta charSet="utf-8" />
       <link rel="canonical" href={`https://dom.fyi/list`} />
     </Helmet>
-    {year == 2019 && <GithubCorner
+    {year === '2019' && <GithubCorner
       href={github}
       style={{ position: "fixed", right: 0, top: 0 }}
     />}
@@ -30,11 +30,21 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
           <Link to={`/`} children={`‹ dom.vin`} /> 🚀{year}
         </span>
       </h1>
-      <div>{}</div>
     </header>
 
+    {year === '2019' && <h1 style={{opacity: 0.33, marginBottom: '3rem'}}>
+        On Design and Dev and starting a blog.
+    </h1>
+    }
+
+    {year === '2021' && <h1 style={{opacity: 0.33, marginBottom: '3rem'}}>
+        On launching a startup.
+    </h1>
+    }
+    
+
     <nav>
-      {notes.map(({ date, content, gapAfter }, i) => (
+      {notes.filter(note => note.content.excerpt.indexOf("🚀") === 0).map(({ date, content, gapAfter }, i) => (
         <React.Fragment key={date}>
           <div
             style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
@@ -52,16 +62,6 @@ export default ({ pageContext: { notes, year, activeYears = [] } }) => (
         </React.Fragment>
       ))}
     </nav>
-    {/* How did the blog start and lots of , the year in which the virus came */}
-    {/* <div>
-      {year < new Date().getFullYear() && (
-        <React.Fragment>
-          <h1 style={{ marginTop: "0" }}>
-            <Link to={`/${+year + 1}`} children={`${+year + 1} ›`} />
-          </h1>
-        </React.Fragment>
-      )}
-    </div> */}
   </main>
 )
 
