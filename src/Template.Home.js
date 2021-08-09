@@ -12,7 +12,7 @@ const github = "https://github.com/domfyi/dom.fyi"
 const Rocket = () => <div className="list_divider">🚀</div>
 
 export default ({ pageContext: { notes } }) => (
-  <main style={{paddingBottom: '3rem', paddingTop: '1.5rem'}}>
+  <main class="home" style={{paddingBottom: '3rem', paddingTop: '2.4rem'}}>
     <Helmet>
       <title>dom.vin</title>
       <meta charSet="utf-8" />
@@ -30,10 +30,7 @@ export default ({ pageContext: { notes } }) => (
       </h1>
     </header>
     <div>
-      <img src="dom.png" style={{marginBottom: '3rem', width: '100%', maxWidth: 490}}/>
-      {/* <h1 style={{opacity: 0.33}}>
-        Project notes
-      </h1> */}
+      <img src="dom.png" style={{marginBottom: '2.5rem', width: '100%', maxWidth: 490}}/>
       <React.Fragment>
         <h1 style={{ marginTop: "0" }}>
           <Link to={`/2021`}>
