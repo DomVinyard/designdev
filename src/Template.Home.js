@@ -24,7 +24,7 @@ export default ({ pageContext: { notes } }) => (
         style={{ position: "fixed", right: 0, top: 0 }}
       /> */}
       <div>
-        <img src="dom2.png" style={{marginTop: '2.5rem', maxWidth: '90%', width: 230}}/>
+        <img src="dom.png" style={{marginTop: '2.5rem', maxWidth: '90%', width: 230}}/>
         <header style={{ display: "block" }}>
           <h1>
             <span aria-label="rocket" style={{ marginRight: "1rem", marginBottom: 0 , fontSize: '2.5rem'}} role="img">
