@@ -38,7 +38,7 @@ export default ({ pageContext: { notes, year } }) => (
     }
 
     {year === '2021' && <h1 style={{opacity: 0.33, marginBottom: '3rem'}}>
-        A simple ownership model for teams.
+        On owning and sharing. Startups, innovation and the creative creator process.
     </h1>
     }
     
