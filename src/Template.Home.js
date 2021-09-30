@@ -40,7 +40,7 @@ export default ({ pageContext: { notes } }) => (
         <React.Fragment>
           <h1 style={{ marginTop: "0" }}>
             <Link to={`/2021`}>
-              2021 <span style={{opacity: 0.33}}>Ownership</span> ›
+              2021 <span style={{opacity: 0.33}}>Ownership App</span> ›
               </Link>
           </h1>
         </React.Fragment>
