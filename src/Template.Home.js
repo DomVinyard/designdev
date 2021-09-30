@@ -27,9 +27,10 @@ export default ({ pageContext: { notes } }) => (
         <img src="dom.png" style={{marginTop: '2.5rem', maxWidth: '90%', width: 230}}/>
         <header style={{ display: "block" }}>
           <h1>
-            <span aria-label="rocket" style={{ marginRight: "1rem", marginBottom: 0 , fontSize: '2.5rem'}} role="img">
+            <span style={{ marginRight: "1rem", marginBottom: 0 , fontSize: '2.5rem'}}>
               Dom Vinyard
             </span>
+            <span style={{ marginRight: "1rem", marginBottom: 0 , fontSize: '2.5rem', color: '#279BCC'}}>Dom is a designer and software developer, the creator of Ownership and a teacher and mentor at Code Your Future.</span>
           </h1>
         </header>
         <React.Fragment>
