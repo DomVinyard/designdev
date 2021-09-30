@@ -16,9 +16,9 @@ const Rocket = () => <div className="list_divider">🚀</div>
 export default ({ pageContext: { notes, year } }) => (
   <main>
     <Helmet>
-      <title>dom.fyi</title>
+      <title>dom.vin</title>
       <meta charSet="utf-8" />
-      <link rel="canonical" href={`https://dom.fyi/list`} />
+      <link rel="canonical" href={`https://dom.vin/list`} />
     </Helmet>
     {year === '2019' && <GithubCorner
       href={github}

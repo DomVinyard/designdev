@@ -1,6 +1,6 @@
 /* 
   Parser for YearDay format dates
-  Docs at https://dom.fyi/2019.220
+  Docs at https://dom.vin/2019.220
 
   Returns a YearDate object, which is actually just a momentjs object
 */

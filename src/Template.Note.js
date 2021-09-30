@@ -1,5 +1,5 @@
 /*
- * An individual dom.fyi note.
+ * An individual dom.vin note.
  */
 
 import React from "react"
@@ -61,9 +61,9 @@ export default ({
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>dom.fyi</title>
-        <link rel="canonical" href={`https://dom.fyi/${date}`} />
-        <meta property="og:url" content={`https://dom.fyi/${date}`} />
+        <title>dom.vin</title>
+        <link rel="canonical" href={`https://dom.vin/${date}`} />
+        <meta property="og:url" content={`https://dom.vin/${date}`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={date} />
         <meta property="og:description" content={excerpt.replace("🚀", "")} />

@@ -17,7 +17,7 @@ export default ({ pageContext: { notes } }) => (
       <Helmet>
         <title>dom.vin</title>
         <meta charSet="utf-8" />
-        <link rel="canonical" href={`https://dom.fyi/list`} />
+        <link rel="canonical" href={`https://dom.vin/list`} />
       </Helmet>
       {/* <GithubCorner
         href={github}
