@@ -31,8 +31,10 @@ export default ({ pageContext: { notes } }) => (
               Dom Vinyard
             </span>
             <div>
-            <span style={{ marginRight: "1rem", marginBottom: 0, color: '#279BCC'}}>Dom is a designer and software developer, the creator of Ownership and a teacher and mentor at Code Your Future.</span>
-          </div>
+              <span style={{ marginRight: "1rem", marginBottom: 0, color: '#279BCC' }}>
+                Dom is a designer and software developer, the creator of Ownership and a teacher and mentor at Code Your Future.
+              </span>
+            </div>
           </h1>
         </header>
         <React.Fragment>
