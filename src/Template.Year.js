@@ -27,7 +27,7 @@ export default ({ pageContext: { notes, year } }) => (
     <header style={{ display: "block" }}>
       <h1>
         <span aria-label="rocket" style={{ marginRight: "1rem" }} role="img">
-          <Link to={`/`} children={`‹ dom.vin`} /> 🚀{year}
+          <Link to={`/blog`} children={`‹ all`} /> 💛 {year}
         </span>
       </h1>
     </header>
@@ -49,7 +49,7 @@ export default ({ pageContext: { notes, year } }) => (
           <div
             style={{ marginBottom: gapAfter > breakLength ? "2rem" : "auto" }}
           >
-            <Link to={`/${date}`}>
+            <Link to={`/blog/${date}`}>
               <label>
                 <span style={{ fontSize: "0.85em" }}>{i + 1}</span>
               </label>

@@ -49,6 +49,11 @@ exports.createPages = async ({ graphql, actions }) => {
     component: resolve(`./src/Template.Home.js`)
   })
 
+  actions.createPage({
+    path: '/blog',
+    component: resolve(`./src/Template.Blog.js`)
+  })
+
   notes.forEach((note, i) => {
     const next = notes[i + 1] && `/${notes[i + 1].date}`
     const isLatest = i + 1 === notes.length
@@ -58,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
       YearDay(notes[i + 1].date).diff(YearDay(note.date), "days")
     note.gapAfter = gapAfter
     actions.createPage({
-      path: note.date,
+      path: `blog/${note.date}`,
       component: resolve(`./src/Template.Note.js`),
       context: { date: note.date, next, gapAfter, isLatest },
     })
@@ -68,8 +73,8 @@ exports.createPages = async ({ graphql, actions }) => {
   activeYears.map(async year => {
     console.log("📅 year list", year)
     await actions.createPage({
-      path: `/${year}`,
-      component: resolve(`./src/Template.List.js`),
+      path: `/blog/${year}`,
+      component: resolve(`./src/Template.Year.js`),
       context: {
         year,
         activeYears,
@@ -81,41 +86,41 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  await actions.createRedirect({
-    fromPath: `/list`,
-    toPath: `/`,
-    statusCode: "200!",
-  })
+  // await actions.createRedirect({
+  //   fromPath: `/list`,
+  //   toPath: `/`,
+  //   statusCode: "200!",
+  // })
 
   // from articles instead of redirects
 
-  Object.entries(redirects).forEach(async ([key, value]) => {
-    await actions.createRedirect({
-      fromPath: `https://${key}`,
-      toPath: `/${value}`,
-      statusCode: "200!",
-    })
-    await actions.createRedirect({
-      fromPath: `https://www.${key}`,
-      toPath: `/${value}`,
-      statusCode: "200!",
-    })
-    await actions.createRedirect({
-      fromPath: `https://${key}/*`,
-      toPath: `/${value}`,
-      statusCode: "200!",
-    })
-    await actions.createRedirect({
-      fromPath: `https://www.${key}/*`,
-      toPath: `/${value}`,
-      statusCode: "200!",
-    })
-  })
+  // Object.entries(redirects).forEach(async ([key, value]) => {
+  //   await actions.createRedirect({
+  //     fromPath: `https://${key}`,
+  //     toPath: `/${value}`,
+  //     statusCode: "200!",
+  //   })
+  //   await actions.createRedirect({
+  //     fromPath: `https://www.${key}`,
+  //     toPath: `/${value}`,
+  //     statusCode: "200!",
+  //   })
+  //   await actions.createRedirect({
+  //     fromPath: `https://${key}/*`,
+  //     toPath: `/${value}`,
+  //     statusCode: "200!",
+  //   })
+  //   await actions.createRedirect({
+  //     fromPath: `https://www.${key}/*`,
+  //     toPath: `/${value}`,
+  //     statusCode: "200!",
+  //   })
+  // })
 
-  return await actions.createRedirect({
-    fromPath: "https://dom.fyi",
-    toPath: `https://dom.fyi/2019}`,
-    redirectInBrowser: true,
-    statusCode: 200,
-  })
+  // return await actions.createRedirect({
+  //   fromPath: "https://dom.fyi",
+  //   toPath: `https://dom.fyi/2019}`,
+  //   redirectInBrowser: true,
+  //   statusCode: 200,
+  // })
 }

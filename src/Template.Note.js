@@ -71,9 +71,9 @@ export default ({
       </Helmet>
       {typeof window !== "undefined" && (
         <header>
-          <Link to={`/${year}`} children={`‹ ${year}`} />
+          <Link to={`/blog/${year}`} children={`‹ ${year}`} />
           <h1>
-            {`🚀`}
+            {`💛`}
             {isLatest ? (
               <TimeAgo date={YearDay(date)} formatter={formatter} />
             ) : (
@@ -94,7 +94,7 @@ export default ({
       )}
       <footer>
         {next && (
-          <h2 children={<Link to={next} children={`${nextText} ›`} />} />
+          <h2 children={<Link to={`blog/${next}`} children={`${nextText} ›`} />} />
         )}
       </footer>
       {/* dev note */}
