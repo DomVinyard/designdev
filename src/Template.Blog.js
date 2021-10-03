@@ -45,6 +45,7 @@ export default ({ pageContext: { notes } }) => (
               fontWeight: "bold",
               letterSpacing: "-2vw",
               margin: "-1vw 0 -4vw 0",
+              pointerEvents: "none",
             }}
           >
             Blog
