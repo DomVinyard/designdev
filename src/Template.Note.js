@@ -7,7 +7,7 @@ import YearDay from "../YearDay"
 import TimeAgo from "react-timeago"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-import moment from 'moment'
+import moment from "moment"
 
 // in your react component
 
@@ -38,11 +38,11 @@ export default ({
   },
   pageContext: { next, gapAfter, isLatest },
 }) => {
-  function dateFromDay(year, day){
-    var date = new Date(year, 0); // initialize a date in `year-01-01`
-    return moment(new Date(date.setDate(day))).format('MMMM DD'); // add the number of days
+  function dateFromDay(year, day) {
+    var date = new Date(year, 0) // initialize a date in `year-01-01`
+    return moment(new Date(date.setDate(day))).format("MMMM DD") // add the number of days
   }
-  
+
   let [note, dev_note] = rawMarkdownBody.split("👤")
   note = note.replace("🚀\n", "")
   const [year, day] = date.split(".")
@@ -73,7 +73,15 @@ export default ({
         <header>
           <Link to={`/blog/${year}`} children={`‹ ${year}`} />
           <h1>
-            {`💛`}
+            <img
+              src="/dom.png"
+              style={{
+                width: 42,
+                marginRight: 6,
+                marginLeft: 6,
+                marginBottom: -10,
+              }}
+            />
             {isLatest ? (
               <TimeAgo date={YearDay(date)} formatter={formatter} />
             ) : (
@@ -94,7 +102,9 @@ export default ({
       )}
       <footer>
         {next && (
-          <h2 children={<Link to={`blog/${next}`} children={`${nextText} ›`} />} />
+          <h2
+            children={<Link to={`blog/${next}`} children={`${nextText} ›`} />}
+          />
         )}
       </footer>
       {/* dev note */}

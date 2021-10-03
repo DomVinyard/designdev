@@ -1,12 +1,13 @@
 /* 
   Simple responsive styling and a custom font.
 */
-
-@import url("https://fonts.googleapis.com/css?family=Alegreya:400,400i,700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Bungee&family=Roboto:wght@500&display=swap");
 /* html {
   background-color: #279bcc;
 } */
+html {
+  scroll-behavior: smooth;
+}
 body,
 html {
   margin: 0;
@@ -117,6 +118,35 @@ nav span p a {
   opacity: 0.5;
   pointer-events: none;
 }
+
+/* home page on narrow screens */
+.bio {
+  font-size: 32px;
+}
+.blog_link {
+  font-size: 28px;
+}
+.mobile_title {
+  display: none !important;
+}
+.desktop_title {
+  display: flex !important;
+}
+@media only screen and (max-width: 900px) {
+  .mobile_title {
+    display: flex !important;
+  }
+  .desktop_title {
+    display: none !important;
+  }
+  .bio {
+    font-size: 24px;
+  }
+  .blog_link {
+    font-size: 22px;
+  }
+}
+
 /* Text scaling on narrow displays */
 @media only screen and (max-width: 900px) {
   article,
