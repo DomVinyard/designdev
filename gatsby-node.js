@@ -43,15 +43,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
   console.log({ notesPublished: notes.map(n => n.date) })
 
-
   actions.createPage({
-    path: '/',
-    component: resolve(`./src/Template.Home.js`)
+    path: "/",
+    component: resolve(`./src/Template.Home.js`),
   })
 
   actions.createPage({
-    path: '/blog',
-    component: resolve(`./src/Template.Blog.js`)
+    path: "/blog",
+    component: resolve(`./src/Template.Blog.js`),
   })
 
   notes.forEach((note, i) => {
