@@ -9,7 +9,7 @@ import { Link } from "gatsby"
 
 const years = [
   { year: "2019", title: "Design & Dev" },
-  { year: "2021", title: "Ownership App" },
+  // { year: "2021", title: "Ownership App" },
 ]
 
 export default ({ pageContext: { notes } }) => (
