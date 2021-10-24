@@ -103,7 +103,7 @@ export default ({
       <footer>
         {next && (
           <h2
-            children={<Link to={`blog/${next}`} children={`${nextText} ›`} />}
+            children={<Link to={`/blog/${next}`} children={`${nextText} ›`} />}
           />
         )}
       </footer>
