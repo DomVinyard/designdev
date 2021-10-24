@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   notes.forEach((note, i) => {
-    const next = notes[i + 1] && `/${notes[i + 1].date}`
+    const next = notes[i + 1] && `${notes[i + 1].date}`
     const isLatest = i + 1 === notes.length
     const gapAfter =
       next &&
